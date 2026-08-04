@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s https://cwromcyosnwyrvflrihq.supabase.co/auth/v1/admin/users -H 'apikey: sb_secret_CfbcF89mkHdvncYBTXan-g_nFVPo-H2' -H 'Authorization: Bearer sb_secret_CfbcF89mkHdvncYBTXan-g_nFVPo-H2')",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s -X PUT https://cwromcyosnwyrvflrihq.supabase.co/auth/v1/admin/users/b9ee093e-4765-4af5-9e7c-596f1f879d80 -H 'apikey: sb_secret_CfbcF89mkHdvncYBTXan-g_nFVPo-H2' -H 'Authorization: Bearer sb_secret_CfbcF89mkHdvncYBTXan-g_nFVPo-H2' -H 'Content-Type: application/json' -d '{\"password\": \"WeddingAdmin2026!\"}')",
+      "Bash(git -C /Users/abigaillarner/Desktop/Apps/wedding-guest-list ls-files admin-app/.env.local)",
+      "Bash(git -C /Users/abigaillarner/Desktop/Apps/wedding-guest-list log --oneline --all)"
+    ]
+  }
+}
