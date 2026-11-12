@@ -2,10 +2,25 @@
    Loaded after each page's own styles so it overrides their .page-hero rules. */
 
 .page-hero {
+  position: relative;
+  isolation: isolate;
   padding: 116px 48px 44px;
-  background: var(--warm-brown) url('assets/peony_pattern.svg') center top / 180px 180px repeat;
+  background: var(--warm-brown);
+}
+
+/* Peony line pattern (dark-green lines on transparent), faded so it reads
+   as a slightly darker green than the header background. */
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url('assets/peony_background.webp') center / 900px auto repeat;
+  opacity: 0.14;
+  pointer-events: none;
 }
 
 @media (max-width: 640px) {
   .page-hero { padding: 96px 24px 32px; }
+  .page-hero::before { background-size: 560px auto; }
 }
