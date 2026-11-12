@@ -1,0 +1,65 @@
+/* Mobile hamburger navigation — shared by every page.
+   The menu panel lives outside <nav> because the nav's wavy mask
+   (and its drop-shadow filter when scrolled) would clip anything inside it. */
+
+.nav-toggle,
+.mobile-menu { display: none; }
+
+/* No logo in the nav, so center the links (hamburger sits right on mobile). */
+nav { justify-content: center; }
+
+@media (max-width: 860px) {
+  nav { padding: 16px 24px 28px; justify-content: flex-end; }
+  nav .nav-links { display: none; }
+
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;
+    padding: 10px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-toggle span {
+    display: block;
+    height: 1.5px;
+    width: 100%;
+    background: var(--warm-brown-dark);
+    transition: transform 0.3s ease, opacity 0.2s ease;
+  }
+  .menu-open .nav-toggle span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  .menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    position: fixed;
+    inset: 0;
+    z-index: 99; /* just under the nav so the logo and close button stay visible */
+    background: var(--cream);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+  .menu-open .mobile-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+  .menu-open { overflow: hidden; }
+  .menu-open nav { background: var(--cream); }
+
+  .mobile-menu .nav-link { font-size: 0.95rem; letter-spacing: 0.25em; }
+  .mobile-menu .nav-link::after { display: none; }
+  .mobile-menu .nav-link.active { text-decoration: underline; text-underline-offset: 6px; }
+  .mobile-menu .nav-rsvp { font-size: 0.85rem; margin-top: 12px; padding: 18px 30px; }
+}

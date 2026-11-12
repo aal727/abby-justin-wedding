@@ -68,11 +68,11 @@
   .footer-line { width: 60px; height: 1px; background: var(--rose); margin: 0 auto 20px; }
   .footer-sub { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-brown-dark); }
 </style>
+<link rel="stylesheet" href="nav-mobile.css">
 </head>
 <body>
 
 <nav id="navbar">
-  <a href="index.html" class="nav-logo">Abby & Justin</a>
   <div class="nav-links">
     <a href="schedule.html" class="nav-link">Schedule</a>
     <a href="travel.html" class="nav-link active">Travel</a>
@@ -122,5 +122,6 @@
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
 </script>
+<script src="nav-mobile.js"></script>
 </body>
 </html>
