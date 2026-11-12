@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What to Wear | Abby & Justin</title>
+<link rel="stylesheet" href="https://use.typekit.net/sxq2uqn.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fff9ee; --warm-white: #fff9ee; --blush: #e8c4b0; --rose: #c9826a;
+    --warm-brown: #e7f7f0; --warm-brown-dark: #517a76; --muted-gold: #c9a96e;
+    --light-blush: #f5e6de; --text-dark: #2d3f3a; --text-mid: #6b5a52; --text-light: #9a8880;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "brother-1816-printed", sans-serif; font-weight: 300; background: var(--cream); color: var(--text-dark); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px 32px; background: transparent; transition: none; -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H1200 V87 Q1180,75 1160,87 Q1140,99 1120,87 Q1100,75 1080,87 Q1060,99 1040,87 Q1020,75 1000,87 Q980,99 960,87 Q940,75 920,87 Q900,99 880,87 Q860,75 840,87 Q820,99 800,87 Q780,75 760,87 Q740,99 720,87 Q700,75 680,87 Q660,99 640,87 Q620,75 600,87 Q580,99 560,87 Q540,75 520,87 Q500,99 480,87 Q460,75 440,87 Q420,99 400,87 Q380,75 360,87 Q340,99 320,87 Q300,75 280,87 Q260,99 240,87 Q220,75 200,87 Q180,99 160,87 Q140,75 120,87 Q100,99 80,87 Q60,75 40,87 Q20,99 0,87 Z' fill='black'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 100' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H1200 V87 Q1180,75 1160,87 Q1140,99 1120,87 Q1100,75 1080,87 Q1060,99 1040,87 Q1020,75 1000,87 Q980,99 960,87 Q940,75 920,87 Q900,99 880,87 Q860,75 840,87 Q820,99 800,87 Q780,75 760,87 Q740,99 720,87 Q700,75 680,87 Q660,99 640,87 Q620,75 600,87 Q580,99 560,87 Q540,75 520,87 Q500,99 480,87 Q460,75 440,87 Q420,99 400,87 Q380,75 360,87 Q340,99 320,87 Q300,75 280,87 Q260,99 240,87 Q220,75 200,87 Q180,99 160,87 Q140,75 120,87 Q100,99 80,87 Q60,75 40,87 Q20,99 0,87 Z' fill='black'/%3E%3C/svg%3E"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; }
+  nav.scrolled { background: var(--cream); filter: drop-shadow(0 2px 0px #517a76); }
+  .nav-logo { font-family: deseo-medium, sans-serif; font-size: 1.2rem; font-weight: 400; letter-spacing: 0.12em; color: var(--warm-brown-dark); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-link { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); text-decoration: none; position: relative; }
+  .nav-link::after { content: ''; position: absolute; top: -18px; left: 50%; transform: translateX(-50%); width: 14px; height: 12px; background: url('assets/heart.svg') center / contain no-repeat; filter: invert(43%) sepia(17%) saturate(636%) hue-rotate(133deg) brightness(89%) contrast(87%); opacity: 0; transition: opacity 0.2s; }
+  .nav-link:hover::after { opacity: 1; }
+  
+  
+  .nav-link.active::after { opacity: 1; }
+  .nav-rsvp {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-brown-dark);
+    text-decoration: none;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    z-index: 0;
+  }
+  .nav-rsvp::before {
+    content: '';
+    position: absolute;
+    inset: -8px -10px;
+    background: url('assets/stamp.svg') center / 100% 100% no-repeat;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .page-hero { padding: 160px 48px 80px; background: var(--warm-brown); text-align: center; }
+  .page-title { font-family: deseo-medium, sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; color: var(--warm-brown-dark); line-height: 1.05; }
+  .page-subtitle { font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-brown-dark); margin-top: 16px; }
+
+  .page-content { max-width: 800px; margin: 0 auto; padding: 72px 48px 88px; }
+  .wear-block { margin-bottom: 64px; }
+  .wear-block:last-child { margin-bottom: 0; }
+  .wear-heading { font-family: deseo-medium, sans-serif; font-size: 2rem; font-weight: 300; color: var(--warm-brown-dark); margin-bottom: 16px; }
+  .wear-body { font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 300; color: var(--text-mid); line-height: 1.8; }
+  .wear-body + .wear-body { margin-top: 12px; }
+  .wear-intro { text-align: center; max-width: 600px; margin: 0 auto 64px; }
+  .wear-theme { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--warm-brown-dark); margin-bottom: 8px; }
+  .wear-theme-name { font-family: deseo-medium, sans-serif; font-size: clamp(2.6rem, 6vw, 3.6rem); font-weight: 300; color: var(--warm-brown-dark); line-height: 1.05; margin-bottom: 20px; }
+
+  /* Palette */
+  .palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 20px; margin-top: 28px; }
+  .swatch { text-align: center; }
+  .swatch-chip { width: 100%; aspect-ratio: 1; border-radius: 50%; max-width: 110px; margin: 0 auto 12px; box-shadow: inset 0 0 0 1px rgba(81,122,118,0.15); }
+  .swatch-name { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); }
+
+  /* Inspiration */
+  .inspo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
+  .inspo-card { background: var(--warm-brown); padding: 32px 28px; }
+  .inspo-title { font-family: deseo-medium, sans-serif; font-size: 2rem; font-weight: 300; color: var(--warm-brown-dark); margin-bottom: 16px; text-align: center; }
+  .inspo-list { list-style: none; }
+  .inspo-list li { font-family: 'Jost', sans-serif; font-size: 0.92rem; font-weight: 300; color: var(--text-mid); line-height: 1.6; padding: 8px 0 8px 22px; position: relative; }
+  .inspo-list li::before { content: ''; position: absolute; left: 0; top: 15px; width: 10px; height: 9px; background: url('assets/heart.svg') center / contain no-repeat; filter: invert(43%) sepia(17%) saturate(636%) hue-rotate(133deg) brightness(89%) contrast(87%); }
+
+  @media (max-width: 640px) {
+    .page-content { padding: 48px 24px 64px; }
+    .palette { grid-template-columns: repeat(4, 1fr); gap: 20px 12px; }
+    .swatch-name { font-size: 0.6rem; letter-spacing: 0.12em; }
+    .inspo-grid { grid-template-columns: 1fr; }
+  }
+
+  footer { background: var(--warm-brown); padding: 80px 24px; text-align: center; }
+  .footer-names { font-family: deseo-medium, sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; font-style: italic; color: var(--warm-brown-dark); line-height: 1.05; margin-bottom: 24px; opacity: 0.9; }
+  .footer-line { width: 60px; height: 1px; background: var(--rose); margin: 0 auto 20px; }
+  .footer-sub { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-brown-dark); }
+</style>
+<link rel="stylesheet" href="nav-mobile.css">
+<link rel="stylesheet" href="page-header.css">
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="schedule.html" class="nav-link">Schedule</a>
+    <a href="attire.html" class="nav-link active">What to Wear</a>
+    <a href="travel.html" class="nav-link">Travel</a>
+    <a href="faq.html" class="nav-link">FAQ</a>
+    <a href="registry.html" class="nav-link">Registry</a>
+    <a href="index.html#rsvp" class="nav-rsvp">RSVP</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1 class="page-title">What to Wear</h1>
+  <p class="page-subtitle">Come as you are, dressed for a garden</p>
+</div>
+
+<div class="page-content">
+  <div class="wear-intro">
+    <p class="wear-theme">Our theme</p>
+    <p class="wear-theme-name">Whimsical Garden Party</p>
+    <p class="wear-body">Honestly? Wear whatever you want &mdash; we just want you there. But if you&rsquo;d like to play along, think florals, soft colors, and anything that feels like a spring afternoon in a garden. Have fun with it!</p>
+  </div>
+
+  <div class="wear-block">
+    <h2 class="wear-heading">Our Color Palette</h2>
+    <p class="wear-body">These are the colors we&rsquo;ll be surrounded by. Pull from them as much or as little as you like.</p>
+    <div class="palette">
+      <div class="swatch"><div class="swatch-chip" style="background:#517a76"></div><div class="swatch-name">Eucalyptus</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#819771"></div><div class="swatch-name">Garden Sage</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#cfe9de"></div><div class="swatch-name">Mint</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#94a6dc"></div><div class="swatch-name">Periwinkle</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#b9a7d9"></div><div class="swatch-name">Lavender</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#f4bcc2"></div><div class="swatch-name">Peony Pink</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#f6b48c"></div><div class="swatch-name">Apricot</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#fccf6c"></div><div class="swatch-name">Butter</div></div>
+    </div>
+  </div>
+
+  <div class="wear-block">
+    <h2 class="wear-heading">A Little Inspiration</h2>
+    <div class="inspo-grid">
+      <div class="inspo-card">
+        <h3 class="inspo-title">For Her</h3>
+        <ul class="inspo-list">
+          <li>Floral midi or maxi dresses in soft, flowy fabrics</li>
+          <li>Pastels and garden tones &mdash; pinks, lavenders, butter yellow, sage</li>
+          <li>Playful details like puff sleeves, ruffles, or tiered skirts</li>
+          <li>A dressy jumpsuit or pretty two-piece set</li>
+          <li>Block heels, wedges, or dressy flats for garden paths</li>
+          <li>Fun extras: pearls, floral hair clips, a statement earring</li>
+        </ul>
+      </div>
+      <div class="inspo-card">
+        <h3 class="inspo-title">For Him</h3>
+        <ul class="inspo-list">
+          <li>Suits in light gray, tan, sage, or navy</li>
+          <li>Lightweight fabrics like linen or cotton blends</li>
+          <li>Pastel or subtly patterned dress shirts</li>
+          <li>A floral tie, bow tie, or pocket square &mdash; or skip the tie altogether</li>
+          <li>Loafers or dress shoes in brown or tan</li>
+          <li>Bonus points for a flower in the lapel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="wear-block">
+    <h2 class="wear-heading">A Few Practical Notes</h2>
+    <p class="wear-body">March evenings in Atlanta can be cool, so bring a light layer &mdash; a wrap, shawl, or jacket will keep you comfortable as the sun goes down.</p>
+    <p class="wear-body">Comfortable shoes are your friend. There will be dancing!</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-names">Abby &amp; Justin</div>
+  <div class="footer-line"></div>
+  <div class="footer-sub">March 12, 2026 &nbsp;·&nbsp; Callanwolde Fine Arts Center</div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+</script>
+<script src="nav-mobile.js"></script>
+</body>
+</html>
