@@ -1,0 +1,11 @@
+/* Internal page headers (Schedule, Travel, FAQ, Registry, RSVP).
+   Loaded after each page's own styles so it overrides their .page-hero rules. */
+
+.page-hero {
+  padding: 116px 48px 44px;
+  background: var(--warm-brown) url('assets/peony_pattern.svg') center top / 180px 180px repeat;
+}
+
+@media (max-width: 640px) {
+  .page-hero { padding: 96px 24px 32px; }
+}
