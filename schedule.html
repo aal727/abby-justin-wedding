@@ -150,6 +150,11 @@
   }
   .schedule-host { font-style: italic; margin-top: 8px; }
   .schedule-attire a { color: inherit; text-underline-offset: 3px; }
+  /* Breathing room: name | location + directions | attire */
+  .schedule-event-name { margin-bottom: 4px; }
+  .schedule-event .schedule-time { display: block; min-width: 0; padding-top: 0; margin-bottom: 12px; }
+  .schedule-map + .schedule-attire { margin-top: 14px; }
+  .schedule-event > div { flex: 1; min-width: 0; }
   /* No dividers between days; the accordion carries a bottom line instead */
   .schedule-day-label { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
   .schedule-event { border-bottom: none; padding: 8px 0 0; }
@@ -214,13 +219,13 @@
   <div class="schedule-day">
     <h2 class="schedule-day-label">Thursday, March 11th</h2>
     <div class="schedule-event">
-      <span class="schedule-time">7:30pm – 9:30pm</span>
       <div>
         <span class="schedule-event-name">Welcome Desserts and Drinks</span>
+        <span class="schedule-time">7:30pm – 9:30pm</span>
         <span class="schedule-event-detail">The Supermarket</span>
         <span class="schedule-event-detail">638 North Highland Avenue Northeast</span>
-        <span class="schedule-event-detail schedule-attire">Attire: Cocktail Casual</span>
         <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=638+N+Highland+Ave+NE+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
+        <span class="schedule-event-detail schedule-attire">Attire: Cocktail Casual</span>
         <details class="schedule-acc">
           <summary>Parking &amp; Getting In</summary>
           <div class="schedule-acc-body">
@@ -246,14 +251,14 @@
   <div class="schedule-day">
     <h2 class="schedule-day-label">Friday, March 12th</h2>
     <div class="schedule-event">
-      <span class="schedule-time">4:30pm</span>
       <div>
         <span class="schedule-event-name">Wedding Ceremony &amp; Reception</span>
+        <span class="schedule-time">4:30pm</span>
         <span class="schedule-event-detail">Ceremony begins at 4:30 in the afternoon</span>
         <span class="schedule-event-detail">Callanwolde Fine Arts Center</span>
         <span class="schedule-event-detail">980 Briarcliff Road Northeast</span>
-        <span class="schedule-event-detail schedule-attire">Attire: <a href="attire.html">Whimsical Garden Party</a></span>
         <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=Callanwolde+Fine+Arts+Center+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
+        <span class="schedule-event-detail schedule-attire">Attire: <a href="attire.html">Whimsical Garden Party</a></span>
         <details class="schedule-acc">
           <summary>Parking &amp; Getting There</summary>
           <div class="schedule-acc-body">
@@ -274,13 +279,13 @@
   <div class="schedule-day">
     <h2 class="schedule-day-label">Saturday, March 13th</h2>
     <div class="schedule-event">
-      <span class="schedule-time">10:00am – 12:30pm</span>
       <div>
         <span class="schedule-event-name">Brunch</span>
+        <span class="schedule-time">10:00am – 12:30pm</span>
         <span class="schedule-event-detail">The McClellan Home</span>
         <span class="schedule-event-detail">147 Friar Tuck Road Northeast</span>
-        <span class="schedule-event-detail schedule-attire">Attire: Casual</span>
         <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=147+Friar+Tuck+Road+NE+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
+        <span class="schedule-event-detail schedule-attire">Attire: Casual</span>
         <span class="schedule-event-detail schedule-host">Generously hosted by Cathie and Jeff McClellan</span>
         <details class="schedule-acc">
           <summary>Parking</summary>
