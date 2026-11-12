@@ -393,6 +393,7 @@
     pointer-events: none;
     z-index: 1;
   }
+  .gallery-item picture { display: block; width: 100%; height: 100%; }
   .gallery-item img {
     width: 100%;
     height: 100%;
@@ -474,6 +475,12 @@
   .tl-corner-tl { top: 6%;    left: 3%;  --final-t: rotate(0deg); }
   .tl-corner-tr { top: 35%;  right: 3%; --final-t: rotate(-12deg); }
   .tl-corner-bl { bottom: 6%; left: 3%; --final-t: rotate(-6deg); }
+
+  /* Per-item icons: mobile only (desktop uses the corner drawings) */
+  .tl-item-icon {
+    display: none;
+    filter: invert(43%) sepia(17%) saturate(636%) hue-rotate(133deg) brightness(89%) contrast(87%);
+  }
 
   .tl-corner-icon.tl-animated {
     animation: iconBloom 2s var(--tl-delay, 0s) ease forwards;
@@ -735,12 +742,13 @@
     .intro-section { padding: 64px 24px 64px; }
     .intro-heading { margin: 0 0 24px; font-size: 3rem; line-height: 1.05; }
     .mobile-break { display: inline; }
-    /* Schedule drawings: small, tucked into the empty top/bottom margins */
-    .timeline-section { padding: 96px 24px; }
-    .tl-corner-icon { width: 72px; height: 72px; }
-    .tl-corner-tl { top: 16px; left: 12px; }
-    .tl-corner-tr { top: 16px; right: 12px; }
-    .tl-corner-bl { top: auto; bottom: 16px; left: auto; right: 12px; }
+    /* Schedule drawings: one upright icon above each item instead of corners.
+       Heights differ because the rings file has lots of built-in empty space. */
+    .timeline-icons { display: none; }
+    .tl-item-icon { display: block; width: auto; margin: 0 auto 8px; }
+    .tl-icon-champagne { height: 72px; }
+    .tl-icon-rings { height: 120px; margin: -26px auto -18px; }
+    .tl-icon-brunch { height: 46px; margin-bottom: 12px; }
     .timeline-section .section-heading { margin-bottom: 0; }
     .tl-stack { margin-top: 16px; }
     .timeline-grid { grid-template-columns: 1fr 1fr; }
@@ -802,6 +810,7 @@
     <div class="tl-stack">
       <div class="tl-stack-item">
         <div class="tl-stack-content">
+          <img src="assets/champagne.svg" class="tl-item-icon tl-icon-champagne" alt="">
           <span class="tl-name">Welcome Party</span>
           <span class="tl-date">Thursday, March 11th</span>
           <span class="tl-time">7:00 PM</span>
@@ -809,6 +818,7 @@
       </div>
       <div class="tl-stack-item">
         <div class="tl-stack-content">
+          <img src="assets/rings.svg" class="tl-item-icon tl-icon-rings" alt="">
           <span class="tl-name">Wedding Ceremony and Reception</span>
           <span class="tl-date">Friday, March 12th</span>
           <span class="tl-time">4:30 PM</span>
@@ -816,6 +826,7 @@
       </div>
       <div class="tl-stack-item">
         <div class="tl-stack-content">
+          <img src="assets/coffee_croissant.svg" class="tl-item-icon tl-icon-brunch" alt="">
           <span class="tl-name">Brunch</span>
           <span class="tl-date">Saturday, March 13th</span>
           <span class="tl-time">11:00 AM</span>
@@ -835,12 +846,12 @@
 <!-- OUR STORY -->
 <div class="story-section">
   <div class="gallery-wall reveal">
-    <div class="gallery-item gi-1"><img src="assets/abby&justin.JPG" alt=""></div>
-    <div class="gallery-item gi-2"><img src="assets/j&a.JPG" alt=""></div>
-    <div class="gallery-item gi-3"><img src="assets/197DEDFD-A898-4E4E-9942-4325CAE1169D.JPG" alt=""></div>
-    <div class="gallery-item gi-4"><img src="assets/9B598D50-837D-4FCB-8AC3-00459B5DEDA1.JPG" alt=""></div>
-    <div class="gallery-item gi-5"><img src="assets/C18265F4-A505-4BAF-AD86-EA5A9B2B5A60.JPG" alt=""></div>
-    <div class="gallery-item gi-6"><img src="assets/E3695CD1-B8B9-4DD5-AE9E-DCB77388AF00.JPG" alt=""></div>
+    <div class="gallery-item gi-1"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-1.jpg"><img src="assets/abby&justin.JPG" alt="" loading="lazy"></picture></div>
+    <div class="gallery-item gi-2"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-2.jpg"><img src="assets/j&a.JPG" alt="" loading="lazy"></picture></div>
+    <div class="gallery-item gi-3"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-3.jpg"><img src="assets/197DEDFD-A898-4E4E-9942-4325CAE1169D.JPG" alt="" loading="lazy"></picture></div>
+    <div class="gallery-item gi-4"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-4.jpg"><img src="assets/9B598D50-837D-4FCB-8AC3-00459B5DEDA1.JPG" alt="" loading="lazy"></picture></div>
+    <div class="gallery-item gi-5"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-5.jpg"><img src="assets/C18265F4-A505-4BAF-AD86-EA5A9B2B5A60.JPG" alt="" loading="lazy"></picture></div>
+    <div class="gallery-item gi-6"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-6.jpg"><img src="assets/E3695CD1-B8B9-4DD5-AE9E-DCB77388AF00.JPG" alt="" loading="lazy"></picture></div>
   </div>
 </div>
 
