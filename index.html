@@ -535,6 +535,38 @@
     letter-spacing: 0.1em;
     color: var(--warm-brown-dark);
   }
+  .tl-venue {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--warm-brown-dark);
+    margin-top: 4px;
+  }
+  .tl-address {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--warm-brown-dark);
+  }
+  .tl-map {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-brown-dark);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    margin-top: 2px;
+  }
+  .tl-host {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--warm-brown-dark);
+    margin-top: 6px;
+  }
 
   /* DETAILS */
   .details-section {
@@ -798,7 +830,7 @@
     .tl-icon-champagne { height: 72px; }
     .tl-icon-rings { height: 120px; margin: -26px auto -18px; }
     .tl-icon-brunch { height: 80px; filter: none; mix-blend-mode: multiply; }
-    .timeline-section .section-heading { margin-bottom: 0; }
+    .timeline-section .section-heading { margin-bottom: 0; font-size: 3rem; line-height: 1.05; }
     .tl-stack { margin-top: 16px; }
     .timeline-grid { grid-template-columns: 1fr 1fr; }
     .details-grid { grid-template-columns: 1fr; }
@@ -860,17 +892,21 @@
       <div class="tl-stack-item">
         <div class="tl-stack-content">
           <img src="assets/champagne.svg" class="tl-item-icon tl-icon-champagne" alt="">
-          <span class="tl-name">Welcome Party</span>
+          <span class="tl-name">Welcome Desserts and Drinks</span>
           <span class="tl-date">Thursday, March 11th</span>
-          <span class="tl-time">7:00 PM</span>
+          <span class="tl-time">7:30pm – 9:30pm</span>
+          <span class="tl-venue">The Supermarket</span>
+          <a class="tl-map" href="https://www.google.com/maps/search/?api=1&amp;query=The+Supermarket+Atlanta+GA" target="_blank" rel="noopener">View on Google Maps</a>
         </div>
       </div>
       <div class="tl-stack-item">
         <div class="tl-stack-content">
           <img src="assets/rings.svg" class="tl-item-icon tl-icon-rings" alt="">
-          <span class="tl-name">Wedding Ceremony and Reception</span>
+          <span class="tl-name">Wedding Ceremony &amp; Reception</span>
           <span class="tl-date">Friday, March 12th</span>
-          <span class="tl-time">4:30 PM</span>
+          <span class="tl-time">Ceremony begins at 4:30 in the afternoon</span>
+          <span class="tl-venue">Callanwolde Fine Arts Center</span>
+          <a class="tl-map" href="https://www.google.com/maps/search/?api=1&amp;query=Callanwolde+Fine+Arts+Center+Atlanta+GA" target="_blank" rel="noopener">View on Google Maps</a>
         </div>
       </div>
       <div class="tl-stack-item">
@@ -878,14 +914,11 @@
           <img src="assets/brunch.png" class="tl-item-icon tl-icon-brunch" alt="">
           <span class="tl-name">Brunch</span>
           <span class="tl-date">Saturday, March 13th</span>
-          <span class="tl-time">11:00 AM</span>
-        </div>
-      </div>
-      <div class="tl-stack-item">
-        <div class="tl-stack-content">
-          <span class="tl-name">Atlanta Brewery Tour</span>
-          <span class="tl-date">Saturday, March 13th</span>
-          <span class="tl-time">2:00 PM</span>
+          <span class="tl-time">10:00am – 12:30pm</span>
+          <span class="tl-venue">The McClellan Home</span>
+          <span class="tl-address">147 Friar Tuck Road Northeast</span>
+          <a class="tl-map" href="https://www.google.com/maps/search/?api=1&amp;query=147+Friar+Tuck+Road+NE+Atlanta+GA" target="_blank" rel="noopener">View on Google Maps</a>
+          <span class="tl-host">Generously hosted by Cathie and Jeff McClellan</span>
         </div>
       </div>
     </div>

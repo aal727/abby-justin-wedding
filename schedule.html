@@ -138,6 +138,22 @@
     color: var(--text-mid);
     line-height: 1.6;
   }
+  .schedule-event-detail, .schedule-map { display: block; }
+  .schedule-map {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-brown-dark);
+    text-underline-offset: 4px;
+    margin-top: 4px;
+  }
+  .schedule-host { font-style: italic; margin-top: 8px; }
+  .schedule-time { flex: 0 0 140px; }
+  @media (max-width: 640px) {
+    .schedule-event { flex-direction: column; gap: 6px; }
+    .schedule-time { flex: none; }
+  }
 
   footer {
     background: var(--warm-brown);
@@ -172,10 +188,11 @@
   <div class="schedule-day">
     <h2 class="schedule-day-label">Thursday, March 11th</h2>
     <div class="schedule-event">
-      <span class="schedule-time">7:00 PM</span>
+      <span class="schedule-time">7:30pm – 9:30pm</span>
       <div>
-        <span class="schedule-event-name">Welcome Party</span>
-        <span class="schedule-event-detail">Join us for drinks and good company to kick off the weekend.</span>
+        <span class="schedule-event-name">Welcome Desserts and Drinks</span>
+        <span class="schedule-event-detail">The Supermarket</span>
+        <a class="schedule-map" href="https://www.google.com/maps/search/?api=1&amp;query=The+Supermarket+Atlanta+GA" target="_blank" rel="noopener">View on Google Maps</a>
       </div>
     </div>
   </div>
@@ -183,10 +200,12 @@
   <div class="schedule-day">
     <h2 class="schedule-day-label">Friday, March 12th</h2>
     <div class="schedule-event">
-      <span class="schedule-time">4:30 PM</span>
+      <span class="schedule-time">4:30pm</span>
       <div>
-        <span class="schedule-event-name">Wedding Ceremony and Reception</span>
-        <span class="schedule-event-detail">Callanwolde Fine Arts Center · Atlanta, Georgia</span>
+        <span class="schedule-event-name">Wedding Ceremony &amp; Reception</span>
+        <span class="schedule-event-detail">Ceremony begins at 4:30 in the afternoon</span>
+        <span class="schedule-event-detail">Callanwolde Fine Arts Center</span>
+        <a class="schedule-map" href="https://www.google.com/maps/search/?api=1&amp;query=Callanwolde+Fine+Arts+Center+Atlanta+GA" target="_blank" rel="noopener">View on Google Maps</a>
       </div>
     </div>
   </div>
@@ -194,17 +213,13 @@
   <div class="schedule-day">
     <h2 class="schedule-day-label">Saturday, March 13th</h2>
     <div class="schedule-event">
-      <span class="schedule-time">11:00 AM</span>
+      <span class="schedule-time">10:00am – 12:30pm</span>
       <div>
         <span class="schedule-event-name">Brunch</span>
-        <span class="schedule-event-detail">A relaxed morning-after brunch with the wedding party and guests.</span>
-      </div>
-    </div>
-    <div class="schedule-event">
-      <span class="schedule-time">2:00 PM</span>
-      <div>
-        <span class="schedule-event-name">Atlanta Brewery Tour</span>
-        <span class="schedule-event-detail">An optional afternoon adventure for those staying the weekend.</span>
+        <span class="schedule-event-detail">The McClellan Home</span>
+        <span class="schedule-event-detail">147 Friar Tuck Road Northeast</span>
+        <a class="schedule-map" href="https://www.google.com/maps/search/?api=1&amp;query=147+Friar+Tuck+Road+NE+Atlanta+GA" target="_blank" rel="noopener">View on Google Maps</a>
+        <span class="schedule-event-detail schedule-host">Generously hosted by Cathie and Jeff McClellan</span>
       </div>
     </div>
   </div>
