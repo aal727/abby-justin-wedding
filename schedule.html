@@ -149,10 +149,29 @@
     margin-top: 4px;
   }
   .schedule-host { font-style: italic; margin-top: 8px; }
+  .schedule-attire a { color: inherit; text-underline-offset: 3px; }
   /* Straight light-gray divider centered between days (48px above and below) */
   .schedule-day-label { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
   .schedule-event { border-bottom: none; padding: 8px 0 0; }
   .schedule-day { margin-bottom: 48px; }
+  /* Accordion (native details/summary) */
+  .schedule-acc { margin-top: 16px; border-top: 1px solid #d3d3d3; }
+  .schedule-acc summary {
+    list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 0; font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark);
+  }
+  .schedule-acc summary::-webkit-details-marker { display: none; }
+  .schedule-acc summary::after { content: '+'; font-size: 1.1rem; font-weight: 300; letter-spacing: 0; transition: transform 0.2s; }
+  .schedule-acc[open] summary::after { transform: rotate(45deg); }
+  .schedule-acc-body { padding: 4px 0 20px; font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--text-mid); line-height: 1.65; }
+  .schedule-acc-body h3 { font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--text-dark); margin: 16px 0 6px; }
+  .schedule-acc-body h3:first-child { margin-top: 4px; }
+  .schedule-acc-body ul { padding-left: 18px; margin-top: 8px; }
+  .schedule-acc-body li { margin-bottom: 10px; }
+  .schedule-acc-body li::marker { color: var(--warm-brown-dark); }
+  .schedule-acc-body strong { font-weight: 500; color: var(--text-dark); }
+  .schedule-acc-body a { color: var(--warm-brown-dark); white-space: nowrap; }
   .schedule-day + .schedule-day { border-top: 1px solid #d3d3d3; padding-top: 48px; }
   .schedule-time { flex: 0 0 140px; color: var(--text-dark); }
   @media (max-width: 640px) {
@@ -200,7 +219,27 @@
       <div>
         <span class="schedule-event-name">Welcome Desserts and Drinks</span>
         <span class="schedule-event-detail">The Supermarket</span>
-        <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Supermarket+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
+        <span class="schedule-event-detail">638 North Highland Avenue Northeast</span>
+        <span class="schedule-event-detail schedule-attire">Attire: Cocktail Casual</span>
+        <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=638+N+Highland+Ave+NE+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
+        <details class="schedule-acc">
+          <summary>Parking &amp; Getting In</summary>
+          <div class="schedule-acc-body">
+            <h3>Parking</h3>
+            <ul>
+              <li><strong>Otto&rsquo;s Lot</strong> &middot; N Highland Ave &amp; Blue Ridge Ave<br>ParkMobile zone 3240/3241 &middot; free 1 hr before 6 PM, paid after &middot; accessible parking priority</li>
+              <li><strong>Plaza Theatre Lot</strong> &middot; 696 Cleburne Terrace NE<br>$5 first hour, $1 each additional hour</li>
+              <li><strong>Parking Deck</strong> &middot; 675 N Highland Ave NE<br>$5&ndash;$6 up to 2 hours, $14 max</li>
+              <li><strong>Street Parking</strong> &middot; N Highland Ave &amp; side streets<br>Limited; avoid residents-only zones</li>
+            </ul>
+            <h3>How to Enter</h3>
+            <ul>
+              <li><strong>Main</strong> &middot; Grey door between Big Softie and Colette Bakeshop on N Highland Ave</li>
+              <li><strong>Side</strong> &middot; Black gate beside Otto&rsquo;s Apartment Hotel on Blue Ridge Ave (please keep noise down)</li>
+              <li><strong>Accessible</strong> &middot; Back alley from Otto&rsquo;s lot; call <a href="tel:+14044581738">(404) 458-1738</a> for an escort</li>
+            </ul>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -213,6 +252,8 @@
         <span class="schedule-event-name">Wedding Ceremony &amp; Reception</span>
         <span class="schedule-event-detail">Ceremony begins at 4:30 in the afternoon</span>
         <span class="schedule-event-detail">Callanwolde Fine Arts Center</span>
+        <span class="schedule-event-detail">980 Briarcliff Road Northeast</span>
+        <span class="schedule-event-detail schedule-attire">Attire: <a href="attire.html">Whimsical Garden Party</a></span>
         <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=Callanwolde+Fine+Arts+Center+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
       </div>
     </div>
@@ -226,6 +267,7 @@
         <span class="schedule-event-name">Brunch</span>
         <span class="schedule-event-detail">The McClellan Home</span>
         <span class="schedule-event-detail">147 Friar Tuck Road Northeast</span>
+        <span class="schedule-event-detail schedule-attire">Attire: Casual</span>
         <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=147+Friar+Tuck+Road+NE+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
         <span class="schedule-event-detail schedule-host">Generously hosted by Cathie and Jeff McClellan</span>
       </div>
