@@ -150,12 +150,12 @@
   }
   .schedule-host { font-style: italic; margin-top: 8px; }
   .schedule-attire a { color: inherit; text-underline-offset: 3px; }
-  /* Straight light-gray divider centered between days (48px above and below) */
+  /* No dividers between days; the accordion carries a bottom line instead */
   .schedule-day-label { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
   .schedule-event { border-bottom: none; padding: 8px 0 0; }
-  .schedule-day { margin-bottom: 48px; }
+  .schedule-day { margin-bottom: 56px; }
   /* Accordion (native details/summary) */
-  .schedule-acc { margin-top: 16px; border-top: 1px solid #d3d3d3; }
+  .schedule-acc { margin-top: 12px; border-bottom: 1px solid #d3d3d3; }
   .schedule-acc summary {
     list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
     padding: 12px 0; font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500;
@@ -172,7 +172,6 @@
   .schedule-acc-body li::marker { color: var(--warm-brown-dark); }
   .schedule-acc-body strong { font-weight: 500; color: var(--text-dark); }
   .schedule-acc-body a { color: var(--warm-brown-dark); white-space: nowrap; }
-  .schedule-day + .schedule-day { border-top: 1px solid #d3d3d3; padding-top: 48px; }
   .schedule-time { flex: 0 0 140px; color: var(--text-dark); }
   @media (max-width: 640px) {
     .schedule-event { flex-direction: column; gap: 6px; }
@@ -255,6 +254,19 @@
         <span class="schedule-event-detail">980 Briarcliff Road Northeast</span>
         <span class="schedule-event-detail schedule-attire">Attire: <a href="attire.html">Whimsical Garden Party</a></span>
         <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=Callanwolde+Fine+Arts+Center+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
+        <details class="schedule-acc">
+          <summary>Parking &amp; Getting There</summary>
+          <div class="schedule-acc-body">
+            <h3>Parking</h3>
+            <ul>
+              <li><strong>Callanwolde Lot</strong> &middot; On site<br>Free &middot; cars must be moved by 11 PM</li>
+            </ul>
+            <h3>Getting There</h3>
+            <ul>
+              <li>We recommend Uber or Lyft so you can enjoy the night without worrying about your car.</li>
+            </ul>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -270,6 +282,14 @@
         <span class="schedule-event-detail schedule-attire">Attire: Casual</span>
         <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=147+Friar+Tuck+Road+NE+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
         <span class="schedule-event-detail schedule-host">Generously hosted by Cathie and Jeff McClellan</span>
+        <details class="schedule-acc">
+          <summary>Parking</summary>
+          <div class="schedule-acc-body">
+            <ul>
+              <li><strong>Street Parking</strong> &middot; Friar Tuck Road<br>Free</li>
+            </ul>
+          </div>
+        </details>
       </div>
     </div>
   </div>
