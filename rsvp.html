@@ -98,6 +98,12 @@
   .footer-names { font-family: deseo-medium, sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; font-style: italic; color: var(--warm-brown-dark); line-height: 1.05; margin-bottom: 24px; opacity: 0.9; }
   .footer-line { width: 60px; height: 1px; background: var(--rose); margin: 0 auto 20px; }
   .footer-sub { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-brown-dark); }
+  /* Text color: brown everywhere except the blue text on the tan (cream) background */
+  :root { --text-dark: #6b5a52; --text-light: #6b5a52; }
+  /* Light blue (mint) sections: all text teal */
+  .hero, .page-hero, .timeline-section, .inspo-card, footer { --warm-brown-dark: #517a76; --text-dark: #517a76; --text-mid: #517a76; --text-light: #517a76; }
+  footer .footer-names { font-size: 3rem; color: #517a76; }
+  .page-hero .page-title, .page-hero .page-subtitle { color: #517a76; }
 </style>
 <link rel="stylesheet" href="nav-mobile.css">
 <link rel="stylesheet" href="page-header.css">
@@ -108,7 +114,6 @@
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
     <a href="schedule.html" class="nav-link">Schedule</a>
-    <a href="attire.html" class="nav-link">What to Wear</a>
     <a href="travel.html" class="nav-link">Travel</a>
     <a href="faq.html" class="nav-link">FAQ</a>
     <a href="registry.html" class="nav-link">Registry</a>
@@ -118,301 +123,30 @@
 
 <div class="page-hero">
   <h1 class="page-title">RSVP</h1>
-  <p class="page-subtitle">Please reply by February 1st, 2026</p>
+  <p class="page-subtitle">Please reply by February 1st, 2027</p>
 </div>
 
 <div class="rsvp-content">
-
-  <!-- Step 1: Search -->
-  <div id="step-search">
-    <p class="rsvp-intro">Search for your name to find your invitation. We'll prefill what we already have so you can confirm your details and let us know if you'll be joining us.</p>
-    <div class="form-field">
-      <label>Your Name</label>
-      <div class="search-wrapper">
-        <input type="text" id="search-input" placeholder="Start typing your first or last name…" autocomplete="off">
-        <div id="search-dropdown" class="search-dropdown" style="display:none"></div>
-      </div>
-      <p class="search-hint">Can't find your name? Email us at <span style="color:var(--text-mid)">abby@example.com</span>.</p>
-      <p id="search-error" class="error-msg" style="display:none"></p>
-    </div>
-  </div>
-
-  <!-- Step 2: Household form -->
-  <div id="step-form" style="display:none">
-    <div class="household-eyebrow">You're RSVPing for</div>
-    <div class="household-name" id="household-display-name"></div>
-
-    <div id="members-container"></div>
-
-    <button class="add-guest-btn" onclick="addNewMember()">+ Add another guest</button>
-
-    <div class="form-field">
-      <label>Will you be attending?</label>
-      <div class="attendance-choice">
-        <button class="attend-btn selected" id="btn-yes" onclick="selectAttend('yes')">Joyfully accepts</button>
-        <button class="attend-btn" id="btn-no" onclick="selectAttend('no')">Regretfully declines</button>
-      </div>
-      <input type="hidden" id="attending" value="yes">
-    </div>
-
-    <div id="attend-details">
-      <div class="form-field">
-        <label>Which events will you attend?</label>
-        <div class="radio-group" style="flex-direction:column;gap:10px;">
-          <label class="radio-label"><input type="checkbox" name="events" value="welcome"> Welcome Party (Thu Mar 11)</label>
-          <label class="radio-label"><input type="checkbox" name="events" value="wedding" checked> Wedding Ceremony &amp; Reception (Fri Mar 12)</label>
-          <label class="radio-label"><input type="checkbox" name="events" value="brunch"> Brunch (Sat Mar 13)</label>
-          <label class="radio-label"><input type="checkbox" name="events" value="brewery"> Atlanta Brewery Tour (Sat Mar 13)</label>
-        </div>
-      </div>
-      <div class="form-field">
-        <label>Dietary Requirements</label>
-        <textarea id="dietary" placeholder="Any allergies or dietary needs for your party…"></textarea>
-      </div>
-    </div>
-
-    <div class="form-field">
-      <label>Message for the couple</label>
-      <textarea id="message" placeholder="Share your well wishes…"></textarea>
-    </div>
-
-    <p id="submit-error" class="error-msg" style="display:none"></p>
-
-    <div class="form-submit">
-      <button class="btn-outline" id="submit-btn" onclick="submitRSVP()">Send My RSVP</button>
-      <button class="start-over" onclick="resetSearch()">Not you? Search again</button>
-    </div>
-  </div>
-
-  <!-- Step 3: Confirmation -->
-  <div id="step-confirmation" style="display:none">
-    <div class="confirmation">
-      <div class="confirm-title" id="confirm-title"></div>
-      <p class="confirm-text" id="confirm-text"></p>
-    </div>
-  </div>
-
+  <iframe id="cheersto-rsvp" src="https://cheersto.love/abbyandjustin2027/rsvp?embed=1" title="RSVP" style="width:100%;border:0;min-height:520px;" loading="lazy"></iframe>
 </div>
 
 <footer>
-  <div class="footer-names">Abby &amp; Justin</div>
+  <div class="footer-names">love A &amp; J</div>
   <div class="footer-line"></div>
-  <div class="footer-sub">March 12, 2026 &nbsp;·&nbsp; Callanwolde Fine Arts Center</div>
+  <div class="footer-sub">March 12, 2027 &nbsp;·&nbsp; Callanwolde Fine Arts Center</div>
 </footer>
 
 <script>
-  const API = 'https://lobster-app-7os6j.ondigitalocean.app/admin/api';
-
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
 
-  let currentHousehold = null;
-  let newMemberCount = 0;
-
-  // ── Search ──────────────────────────────────────────────────────────────────
-
-  let searchTimer;
-  document.getElementById('search-input').addEventListener('input', function () {
-    clearTimeout(searchTimer);
-    const q = this.value.trim();
-    if (q.length < 2) { hideDropdown(); return; }
-    searchTimer = setTimeout(() => searchGuests(q), 300);
+  // RSVP embed: resize to fit, and scroll back up when the form moves to a new step
+  window.addEventListener("message", function (e) {
+    if (e.origin !== "https://cheersto.love") return;
+    var f = document.getElementById("cheersto-rsvp");
+    if (e.data && e.data.type === "cheersto:rsvp-height") f.style.height = e.data.height + "px";
+    if (e.data && e.data.type === "cheersto:rsvp-step" && f.getBoundingClientRect().top < 0) f.scrollIntoView({ behavior: "smooth" });
   });
-
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.search-wrapper')) hideDropdown();
-  });
-
-  async function searchGuests(q) {
-    const dropdown = document.getElementById('search-dropdown');
-    try {
-      const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
-      const contacts = await res.json();
-      if (!contacts.length) {
-        dropdown.innerHTML = '<div class="search-no-results">No matches found. Email us if you need help.</div>';
-        dropdown.style.display = 'block';
-        return;
-      }
-      dropdown.innerHTML = contacts.map(c => {
-        const name = [c.title, c.first_name, c.last_name].filter(Boolean).join(' ');
-        const household = c.households?.display_name ?? '';
-        return `<div class="search-result" onclick="selectHousehold('${c.household_id}')">
-          <div class="search-result-name">${name}</div>
-          ${household ? `<div class="search-result-household">${household}</div>` : ''}
-        </div>`;
-      }).join('');
-      dropdown.style.display = 'block';
-    } catch {
-      dropdown.innerHTML = '<div class="search-no-results">Search unavailable. Please try again.</div>';
-      dropdown.style.display = 'block';
-    }
-  }
-
-  function hideDropdown() {
-    const el = document.getElementById('search-dropdown');
-    el.style.display = 'none';
-    el.innerHTML = '';
-  }
-
-  async function selectHousehold(householdId) {
-    hideDropdown();
-    document.getElementById('search-error').style.display = 'none';
-
-    try {
-      const res = await fetch(`${API}/search?household=${encodeURIComponent(householdId)}`);
-      const data = await res.json();
-      if (!data || data.error) throw new Error();
-      currentHousehold = data;
-      renderHouseholdForm(data);
-      document.getElementById('step-search').style.display = 'none';
-      document.getElementById('step-form').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch {
-      document.getElementById('search-error').textContent = 'Could not load your invitation. Please try again.';
-      document.getElementById('search-error').style.display = 'block';
-    }
-  }
-
-  // ── Form rendering ───────────────────────────────────────────────────────────
-
-  function renderHouseholdForm(household) {
-    document.getElementById('household-display-name').textContent = household.display_name;
-    newMemberCount = 0;
-
-    const sorted = [...household.contacts].sort((a, b) => (b.is_primary ? 1 : 0) - (a.is_primary ? 1 : 0));
-    document.getElementById('members-container').innerHTML = sorted.map(renderExistingMember).join('');
-
-    // reset form state
-    selectAttend('yes');
-    document.querySelectorAll('[name="events"]').forEach(cb => { cb.checked = cb.value === 'wedding'; });
-    document.getElementById('dietary').value = '';
-    document.getElementById('message').value = '';
-    document.getElementById('submit-error').style.display = 'none';
-
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = false;
-    btn.textContent = 'Send My RSVP';
-  }
-
-  function renderExistingMember(c) {
-    const name = [c.title, c.first_name, c.last_name].filter(Boolean).join(' ') || 'Guest';
-    const missingEmail = !c.email?.trim();
-    const missingPhone = !c.phone?.trim();
-    return `<div class="member-card" data-contact-id="${c.id}">
-      <div class="member-name">${name}</div>
-      <div class="member-grid">
-        <div class="form-field">
-          <label>Email</label>
-          <input type="email" value="${c.email ?? ''}" placeholder="email@example.com" data-field="email">
-          ${missingEmail ? '<p class="field-hint">Please add your email.</p>' : ''}
-        </div>
-        <div class="form-field">
-          <label>Phone</label>
-          <input type="tel" value="${c.phone ?? ''}" placeholder="(555) 000-0000" data-field="phone">
-          ${(missingEmail && missingPhone) ? '' : ''}
-        </div>
-      </div>
-    </div>`;
-  }
-
-  function addNewMember() {
-    newMemberCount++;
-    const div = document.createElement('div');
-    div.className = 'member-card';
-    div.dataset.newMember = newMemberCount;
-    div.innerHTML = `
-      <div class="member-name new-member-label">Additional Guest</div>
-      <div class="member-grid">
-        <div class="form-field">
-          <label>First Name</label>
-          <input type="text" placeholder="First name" data-field="first_name">
-        </div>
-        <div class="form-field">
-          <label>Last Name</label>
-          <input type="text" placeholder="Last name" data-field="last_name">
-        </div>
-      </div>
-      <div class="member-grid">
-        <div class="form-field">
-          <label>Email</label>
-          <input type="email" placeholder="email@example.com" data-field="email">
-        </div>
-        <div class="form-field">
-          <label>Phone</label>
-          <input type="tel" placeholder="(555) 000-0000" data-field="phone">
-        </div>
-      </div>
-      <button class="remove-btn" onclick="this.closest('[data-new-member]').remove()">Remove</button>`;
-    document.getElementById('members-container').appendChild(div);
-  }
-
-  function selectAttend(val) {
-    document.getElementById('attending').value = val;
-    document.getElementById('btn-yes').classList.toggle('selected', val === 'yes');
-    document.getElementById('btn-no').classList.toggle('selected', val === 'no');
-    document.getElementById('attend-details').style.display = val === 'yes' ? 'block' : 'none';
-  }
-
-  function resetSearch() {
-    currentHousehold = null;
-    document.getElementById('step-form').style.display = 'none';
-    document.getElementById('step-search').style.display = 'block';
-    document.getElementById('search-input').value = '';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // ── Submission ───────────────────────────────────────────────────────────────
-
-  async function submitRSVP() {
-    if (!currentHousehold) return;
-
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-    document.getElementById('submit-error').style.display = 'none';
-
-    const isAttending = document.getElementById('attending').value === 'yes';
-
-    try {
-      const contacts = [...document.querySelectorAll('#members-container [data-contact-id]')].map(card => ({
-        id: card.dataset.contactId,
-        email: card.querySelector('[data-field="email"]')?.value?.trim() || null,
-        phone: card.querySelector('[data-field="phone"]')?.value?.trim() || null,
-      }));
-
-      const newContacts = [...document.querySelectorAll('#members-container [data-new-member]')]
-        .map(card => ({
-          firstName: card.querySelector('[data-field="first_name"]')?.value?.trim() || '',
-          lastName:  card.querySelector('[data-field="last_name"]')?.value?.trim()  || '',
-          email: card.querySelector('[data-field="email"]')?.value?.trim() || null,
-          phone: card.querySelector('[data-field="phone"]')?.value?.trim() || null,
-        }))
-        .filter(c => c.firstName);
-
-      const res = await fetch(`${API}/rsvp`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ householdId: currentHousehold.id, attending: isAttending, contacts, newContacts }),
-      });
-      const result = await res.json();
-      if (!res.ok || result.error) throw new Error(result.error ?? 'Request failed');
-
-      // Show confirmation
-      document.getElementById('step-form').style.display = 'none';
-      document.getElementById('step-confirmation').style.display = 'block';
-      document.getElementById('confirm-title').textContent = isAttending ? 'See you there!' : 'We\'ll miss you!';
-      document.getElementById('confirm-text').textContent = isAttending
-        ? 'Your RSVP is confirmed. We can\'t wait to celebrate with you on March 12th at Callanwolde Fine Arts Center.'
-        : 'Thank you for letting us know. We\'ll miss having you there and hope to celebrate with you soon.';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    } catch (e) {
-      btn.disabled = false;
-      btn.textContent = 'Send My RSVP';
-      document.getElementById('submit-error').textContent = 'Something went wrong. Please try again or email us directly.';
-      document.getElementById('submit-error').style.display = 'block';
-    }
-  }
 </script>
 <script src="nav-mobile.js"></script>
 </body>

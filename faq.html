@@ -96,6 +96,7 @@
   .faq-item { padding: 28px 0; }
   .faq-q { font-family: deseo-medium, sans-serif; font-size: 2rem; font-weight: 300; font-style: italic; color: var(--warm-brown-dark); margin-bottom: 12px; }
   .faq-a { font-family: 'Jost', sans-serif; font-size: 0.92rem; font-weight: 300; color: var(--text-mid); line-height: 1.75; }
+  .faq-a p + p { margin-top: 12px; }
   .faq-a a { color: var(--rose); text-underline-offset: 3px; }
 
   footer {
@@ -107,6 +108,12 @@
   .footer-names { font-family: deseo-medium, sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; font-style: italic; color: var(--warm-brown-dark); line-height: 1.05; margin-bottom: 24px; opacity: 0.9; }
   .footer-line { width: 60px; height: 1px; background: var(--rose); margin: 0 auto 20px; }
   .footer-sub { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-brown-dark); }
+  /* Text color: brown everywhere except the blue text on the tan (cream) background */
+  :root { --text-dark: #6b5a52; --text-light: #6b5a52; }
+  /* Light blue (mint) sections: all text teal */
+  .hero, .page-hero, .timeline-section, .inspo-card, footer { --warm-brown-dark: #517a76; --text-dark: #517a76; --text-mid: #517a76; --text-light: #517a76; }
+  footer .footer-names { font-size: 3rem; color: #517a76; }
+  .page-hero .page-title, .page-hero .page-subtitle { color: #517a76; }
 </style>
 <link rel="stylesheet" href="nav-mobile.css">
 <link rel="stylesheet" href="page-header.css">
@@ -117,11 +124,10 @@
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
     <a href="schedule.html" class="nav-link">Schedule</a>
-    <a href="attire.html" class="nav-link">What to Wear</a>
     <a href="travel.html" class="nav-link">Travel</a>
     <a href="faq.html" class="nav-link active">FAQ</a>
     <a href="registry.html" class="nav-link">Registry</a>
-    <a href="index.html#rsvp" class="nav-rsvp">RSVP</a>
+    <a href="rsvp.html" class="nav-rsvp">RSVP</a>
   </div>
 </nav>
 
@@ -133,34 +139,52 @@
 <div class="page-content">
   <div class="faq-item">
     <div class="faq-q">What should I wear?</div>
-    <div class="faq-a">Dress in something that makes you feel like yourself. The ceremony will be outdoors and we will be dancing — a lot. Garden-party chic works perfectly!</div>
+    <div class="faq-a">
+      <p>We&rsquo;re going for garden party cocktail attire! Think romantic florals, playful colors, flowy dresses, and suits with a little personality. If you want to play along, our colors are eucalyptus, mint, coral, peach, sky blue, periwinkle, lavender, and butter yellow. Most importantly, wear something that makes you feel comfortable and confident!</p>
+      <p>Weather permitting, part of the celebration will be outdoors in a grassy area, and we&rsquo;ll be dancing the night away, so keep that in mind when choosing your shoes. March evenings in Atlanta can get chilly, so we recommend bringing a light jacket or wrap.</p>
+      <p>The theme is just for fun, so regular cocktail attire is absolutely welcome. For more outfit ideas, open &ldquo;What to Wear&rdquo; under the wedding on our <a href="schedule.html">Schedule</a>.</p>
+    </div>
   </div>
   <div class="faq-item">
     <div class="faq-q">What about gifts?</div>
-    <div class="faq-a">Your presence is truly the greatest gift of all. If you'd like to bless us further, please visit our <a href="registry.html">registry page</a>.</div>
+    <div class="faq-a">
+      <p>Your presence at our wedding is truly the greatest gift we could ask for! We&rsquo;re so grateful to celebrate this special day with our favorite people.</p>
+      <p>If you&rsquo;d like to give us something extra as we start this next chapter together, we&rsquo;ve put together a few things on our <a href="registry.html">registry page</a>.</p>
+    </div>
   </div>
   <div class="faq-item">
     <div class="faq-q">Are children welcome?</div>
-    <div class="faq-a">Yes! The more the merrier. Please let us know if your little ones will be joining when you RSVP so we can plan accordingly.</div>
+    <div class="faq-a">
+      <p>We love your little ones, but we&rsquo;ve decided to keep our wedding ceremony and reception adults-only. We hope this gives everyone a chance to relax, celebrate, and enjoy a fun night out!</p>
+      <p>That said, children are absolutely welcome at our welcome drinks &amp; desserts on Thursday and our brunch on Saturday! We&rsquo;d love for them to be part of the weekend festivities. Please include them in your RSVP for those events so we can plan accordingly.</p>
+    </div>
   </div>
   <div class="faq-item">
     <div class="faq-q">Is there parking at the venue?</div>
-    <div class="faq-a">Yes, parking is available at Callanwolde Fine Arts Center. We also encourage rideshare so everyone can celebrate freely!</div>
+    <div class="faq-a">
+      <p>Yes! Complimentary parking is available on-site at Callanwolde Fine Arts Center.</p>
+      <p>That said, we encourage guests to use Uber or Lyft if they plan to enjoy a few drinks. We want everyone to celebrate freely and get home safely!</p>
+    </div>
   </div>
   <div class="faq-item">
     <div class="faq-q">When is the RSVP deadline?</div>
-    <div class="faq-a">Please RSVP by February 1st, 2026 so we can make sure everything is perfect for your arrival.</div>
+    <div class="faq-a">
+      <p>Please RSVP by February 1, 2027, so we can finalize our guest count, seating arrangements, and all the little details that will make the weekend special.</p>
+      <p>Even if you can&rsquo;t make it, please RSVP to let us know. We&rsquo;ll miss you, but we completely understand!</p>
+    </div>
   </div>
   <div class="faq-item">
-    <div class="faq-q">I have a dietary restriction — who do I tell?</div>
-    <div class="faq-a">Please let us know when you RSVP and we'll make sure you're well taken care of.</div>
+    <div class="faq-q">I have a dietary restriction. Who do I tell?</div>
+    <div class="faq-a">
+      <p>We want everyone to have something delicious to eat! Please let us know about any dietary restrictions when you RSVP.</p>
+    </div>
   </div>
 </div>
 
 <footer>
-  <div class="footer-names">Abby &amp; Justin</div>
+  <div class="footer-names">love A &amp; J</div>
   <div class="footer-line"></div>
-  <div class="footer-sub">March 12, 2026 &nbsp;·&nbsp; Callanwolde Fine Arts Center</div>
+  <div class="footer-sub">March 12, 2027 &nbsp;·&nbsp; Callanwolde Fine Arts Center</div>
 </footer>
 
 <script>

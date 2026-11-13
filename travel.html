@@ -62,11 +62,50 @@
   .hotel-card { border-top: 1px solid var(--rose); padding-top: 20px; margin-top: 24px; }
   .hotel-name { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 500; color: var(--text-dark); margin-bottom: 6px; }
   .hotel-detail { font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--text-mid); line-height: 1.6; }
+  .hotel-detail + .hotel-detail { margin-top: 8px; }
+  .hotel-detail strong { font-weight: 500; }
+  .hotel-detail a { color: var(--warm-brown-dark); text-underline-offset: 3px; }
+  /* Hotel card hierarchy */
+  .hotel-card { border-top: 1px solid #d3d3d3; }
+  .hotel-title { margin-bottom: 4px; }
+  .hotel-img { display: block; width: 100%; max-width: 420px; height: auto; margin: 8px auto 20px; mix-blend-mode: multiply; }
+  .hotel-img--tall { max-width: 260px; }
+  .hotel-meta { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mid); }
+  .hotel-desc { font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 300; color: var(--text-mid); line-height: 1.8; margin-top: 16px; }
+  .hotel-block { margin-top: 24px; padding: 24px 28px; border: 1px solid rgba(81,122,118,0.3); }
+  .hotel-block-label { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); margin-bottom: 14px; }
+  .hotel-facts { display: grid; grid-template-columns: auto 1fr; gap: 8px 24px; font-family: 'Jost', sans-serif; font-size: 0.92rem; color: var(--text-mid); }
+  .hotel-facts dt { font-weight: 500; }
+  .hotel-facts dd { font-weight: 300; }
+  .hotel-block-note { font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; font-style: italic; color: var(--text-mid); margin-top: 14px; }
+  .hotel-btn { display: inline-block; margin-top: 22px; padding: 12px 22px; border: 1px solid var(--warm-brown-dark); font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); text-decoration: none; }
+  .hotel-btn.is-pending { opacity: 0.6; cursor: default; }
+  .hotel-fine { font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 300; font-style: italic; color: var(--text-mid); line-height: 1.6; margin-top: 14px; }
+  a.hotel-btn { transition: background 0.3s, color 0.3s; }
+  a.hotel-btn:hover { background: var(--warm-brown-dark); color: var(--cream); }
+  .hotel-contact { font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 300; color: var(--text-mid); margin-top: 18px; line-height: 1.7; }
+  .hotel-contact-label { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); margin-bottom: 6px; }
+  .hotel-contact strong { font-weight: 500; }
+  .hotel-contact a { color: var(--warm-brown-dark); text-underline-offset: 3px; }
+  .hotel-card + .hotel-card { margin-top: 48px; }
+  .hotel-perks-label { margin-top: 20px; margin-bottom: 8px; }
+  .hotel-perks { list-style: none; font-family: 'Jost', sans-serif; font-size: 0.92rem; font-weight: 300; color: var(--text-mid); }
+  .hotel-perks li { padding: 3px 0 3px 20px; position: relative; }
+  .hotel-perks li::before { content: ''; position: absolute; left: 0; top: 10px; width: 10px; height: 9px; background-color: #6b5a52; -webkit-mask: url('assets/heart.svg') center / contain no-repeat; mask: url('assets/heart.svg') center / contain no-repeat; }
+  .hotel-block-note a { color: var(--warm-brown-dark); text-underline-offset: 3px; }
+  .hotel-block-note strong { font-weight: 500; font-style: normal; }
+  @media (max-width: 640px) { .hotel-block { padding: 20px; } }
 
   footer { background: var(--warm-brown); padding: 80px 24px; text-align: center; }
   .footer-names { font-family: deseo-medium, sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; font-style: italic; color: var(--warm-brown-dark); line-height: 1.05; margin-bottom: 24px; opacity: 0.9; }
   .footer-line { width: 60px; height: 1px; background: var(--rose); margin: 0 auto 20px; }
   .footer-sub { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-brown-dark); }
+  /* Text color: brown everywhere except the blue text on the tan (cream) background */
+  :root { --text-dark: #6b5a52; --text-light: #6b5a52; }
+  /* Light blue (mint) sections: all text teal */
+  .hero, .page-hero, .timeline-section, .inspo-card, footer { --warm-brown-dark: #517a76; --text-dark: #517a76; --text-mid: #517a76; --text-light: #517a76; }
+  footer .footer-names { font-size: 3rem; color: #517a76; }
+  .page-hero .page-title, .page-hero .page-subtitle { color: #517a76; }
 </style>
 <link rel="stylesheet" href="nav-mobile.css">
 <link rel="stylesheet" href="page-header.css">
@@ -77,17 +116,16 @@
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
     <a href="schedule.html" class="nav-link">Schedule</a>
-    <a href="attire.html" class="nav-link">What to Wear</a>
     <a href="travel.html" class="nav-link active">Travel</a>
     <a href="faq.html" class="nav-link">FAQ</a>
     <a href="registry.html" class="nav-link">Registry</a>
-    <a href="index.html#rsvp" class="nav-rsvp">RSVP</a>
+    <a href="rsvp.html" class="nav-rsvp">RSVP</a>
   </div>
 </nav>
 
 <div class="page-hero">
   <h1 class="page-title">Travel</h1>
-  <p class="page-subtitle">Getting to Atlanta, Georgia</p>
+  <p class="page-subtitle">See you In ATL!</p>
 </div>
 
 <div class="page-content">
@@ -98,27 +136,71 @@
 
   <div class="travel-block">
     <h2 class="travel-heading">Where to Stay</h2>
-    <p class="travel-body">We've rounded up some great options near the venue. Add your hotel recommendations here.</p>
+    <p class="travel-body">Make a weekend of it! We&rsquo;ve saved blocks of rooms at two great hotels, both at discounted rates, so you can stay somewhere as fun as the party.</p>
     <div class="hotel-card">
-      <div class="hotel-name">Hotel Name Here</div>
-      <div class="hotel-detail">Address · Distance from venue<br>Add your block code or booking link here.</div>
+      <img class="hotel-img" src="assets/clermont.png" alt="Illustration of Hotel Clermont">
+      <h3 class="travel-heading hotel-title">Hotel Clermont</h3>
+      <div class="hotel-meta">789 Ponce de Leon Ave NE, Atlanta, GA 30306 &middot; About 10 minutes from Callanwolde</div>
+      <p class="hotel-desc">A true Atlanta icon. This beloved landmark on Ponce has been around for nearly a century, and it&rsquo;s got all the charm (and stories) to prove it. Grab a drink on the rooftop with skyline views, then wander to Ponce City Market and the BeltLine just down the street.</p>
+
+      <div class="hotel-block">
+        <div class="hotel-block-label">Our Room Block</div>
+        <dl class="hotel-facts">
+          <dt>Dates</dt><dd>March 11&ndash;13</dd>
+          <dt>Rooms</dt><dd>King or double queen</dd>
+          <dt>Price</dt><dd>25% off the regular online rate</dd>
+          <dt>Book by</dt><dd>February 11, 2027, or until the block sells out</dd>
+        </dl>
+        <p class="hotel-fine">Rates are per night, based on single/double occupancy, and don&rsquo;t include taxes and fees. The front desk can&rsquo;t change the group block or extend your stay at the discounted rate, so be sure to book all your nights through our block.</p>
+        <a class="hotel-btn" href="https://hotelclermont.ihotelier.com/book/dates-of-stay?groupID=5440635" target="_blank" rel="noopener">Book Your Room</a>
+      </div>
+
+      <div class="hotel-contact">
+        <div class="hotel-contact-label">Questions or Want to Book by Phone?</div>
+        <a href="tel:+14704850485">(470) 485-0485</a> &middot; Mention the <strong>Larner/Haught Wedding</strong>
+      </div>
     </div>
     <div class="hotel-card">
-      <div class="hotel-name">Hotel Name Here</div>
-      <div class="hotel-detail">Address · Distance from venue<br>Add your block code or booking link here.</div>
+      <img class="hotel-img hotel-img--tall" src="assets/loews.png" alt="Illustration of Loews Atlanta Hotel">
+      <h3 class="travel-heading hotel-title">Loews Atlanta Hotel</h3>
+      <div class="hotel-meta">1065 Peachtree St NE, Atlanta, GA 30309 &middot; About 15 minutes from Callanwolde</div>
+      <p class="hotel-desc">Polished, modern and right in the heart of Midtown. Spend the morning in Piedmont Park, treat yourself at the Exhale Spa, and grab dinner and drinks just steps from the lobby. It&rsquo;s the perfect home base if you want a little luxury with your celebration.</p>
+
+      <div class="hotel-block">
+        <div class="hotel-block-label">Our Room Block</div>
+        <dl class="hotel-facts">
+          <dt>Dates</dt><dd>March 11&ndash;13</dd>
+          <dt>Rooms</dt><dd>Run of house (king or double)</dd>
+          <dt>Price</dt><dd>$209/night</dd>
+          <dt>Book by</dt><dd>February 11, 2027, or until the block sells out</dd>
+        </dl>
+        <p class="hotel-fine">Rates are per night, based on single/double occupancy, and don&rsquo;t include taxes and fees.</p>
+        <div class="hotel-block-label hotel-perks-label">Perks for Our Guests</div>
+        <ul class="hotel-perks">
+          <li>Free Wi-Fi</li>
+          <li>Free access to Exhale Spa &amp; Fitness Center</li>
+          <li>20% off overnight parking</li>
+        </ul>
+        <a class="hotel-btn" href="https://www.loewshotels.com/atlanta-hotel/wedding-larner-haught-wedding" target="_blank" rel="noopener">Book Your Room</a>
+      </div>
+
+      <div class="hotel-contact">
+        <div class="hotel-contact-label">Questions or Want to Book by Phone?</div>
+        <a href="tel:+14047455000">(404) 745-5000</a> &middot; Mention the <strong>Larner/Haught Wedding</strong>
+      </div>
     </div>
   </div>
 
   <div class="travel-block">
     <h2 class="travel-heading">Getting Around</h2>
-    <p class="travel-body">Atlanta is a car-friendly city. We recommend using rideshare apps like Uber or Lyft for easy travel between events. Parking is available at the venue.</p>
+    <p class="travel-body">Atlanta is a car-friendly city, but traffic can get pretty bad, especially during rush hour, so give yourself some extra time to get around. We recommend using rideshare apps like Uber or Lyft for easy travel between events. Parking is available at the venue.</p>
   </div>
 </div>
 
 <footer>
-  <div class="footer-names">Abby &amp; Justin</div>
+  <div class="footer-names">love A &amp; J</div>
   <div class="footer-line"></div>
-  <div class="footer-sub">March 12, 2026 &nbsp;·&nbsp; Callanwolde Fine Arts Center</div>
+  <div class="footer-sub">March 12, 2027 &nbsp;·&nbsp; Callanwolde Fine Arts Center</div>
 </footer>
 
 <script>

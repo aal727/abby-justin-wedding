@@ -192,6 +192,24 @@
   .footer-names { font-family: deseo-medium, sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; font-style: italic; color: var(--warm-brown-dark); line-height: 1.05; margin-bottom: 24px; opacity: 0.9; }
   .footer-line { width: 60px; height: 1px; background: var(--rose); margin: 0 auto 20px; }
   .footer-sub { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--warm-brown-dark); }
+  /* Text color: brown everywhere except the blue text on the tan (cream) background */
+  :root { --text-dark: #6b5a52; --text-light: #6b5a52; }
+  /* Light blue (mint) sections: all text teal */
+  .hero, .page-hero, .timeline-section, .inspo-card, footer { --warm-brown-dark: #517a76; --text-dark: #517a76; --text-mid: #517a76; --text-light: #517a76; }
+  footer .footer-names { font-size: 3rem; color: #517a76; }
+  .page-hero .page-title, .page-hero .page-subtitle { color: #517a76; }
+  .schedule-day-label { color: #6b5a52; }
+  .schedule-acc-body li::marker { color: #6b5a52; }
+  /* Event drawings (same as home page), in brown */
+  .schedule-icon { order: -1; flex: 0 0 170px; height: 170px; align-self: flex-start; background-color: #6b5a52; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+  /* Line the date up with the event text (icon 170px + 32px gap) */
+  .schedule-day-label { padding-left: 202px; }
+  @media (max-width: 640px) { .schedule-icon { order: -1; flex: none; width: 100px; height: 100px; } }
+  @media (max-width: 640px) { .schedule-day-label { padding-left: 0; } }
+  .schedule-acc-body p + p, .schedule-acc-body p + h3 { margin-top: 14px; }
+  .wear-colors { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 8px; }
+  .wear-color { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; }
+  .wear-dot { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(81,122,118,0.15); flex: none; }
 </style>
 <link rel="stylesheet" href="nav-mobile.css">
 <link rel="stylesheet" href="page-header.css">
@@ -202,17 +220,16 @@
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
     <a href="schedule.html" class="nav-link active">Schedule</a>
-    <a href="attire.html" class="nav-link">What to Wear</a>
     <a href="travel.html" class="nav-link">Travel</a>
     <a href="faq.html" class="nav-link">FAQ</a>
     <a href="registry.html" class="nav-link">Registry</a>
-    <a href="index.html#rsvp" class="nav-rsvp">RSVP</a>
+    <a href="rsvp.html" class="nav-rsvp">RSVP</a>
   </div>
 </nav>
 
 <div class="page-hero">
   <h1 class="page-title">Schedule</h1>
-  <p class="page-subtitle">March 11–13, 2026 · Atlanta, Georgia</p>
+  <p class="page-subtitle">March 11–13, 2027 · Atlanta, Georgia</p>
 </div>
 
 <div class="page-content">
@@ -220,18 +237,19 @@
     <h2 class="schedule-day-label">Thursday, March 11th</h2>
     <div class="schedule-event">
       <div>
-        <span class="schedule-event-name">Welcome Desserts and Drinks</span>
+        <span class="schedule-event-name">Welcome Drinks &amp; Desserts</span>
         <span class="schedule-time">7:30pm – 9:30pm</span>
         <span class="schedule-event-detail">The Supermarket</span>
         <span class="schedule-event-detail">638 North Highland Avenue Northeast</span>
         <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=638+N+Highland+Ave+NE+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
         <span class="schedule-event-detail schedule-attire">Attire: Cocktail Casual</span>
+        <span class="schedule-event-detail">Children welcome</span>
         <details class="schedule-acc">
           <summary>How to Get There</summary>
           <div class="schedule-acc-body">
             <h3>Parking</h3>
             <ul>
-              <li><strong>Otto&rsquo;s Lot</strong> &middot; N Highland Ave &amp; Blue Ridge Ave<br>ParkMobile zone 3240/3241 &middot; free 1 hr before 6 PM, paid after &middot; accessible parking priority</li>
+              <li><strong>Otto&rsquo;s Lot</strong> &middot; N Highland Ave &amp; Blue Ridge Ave<br>Free 1 hr before 6 PM, paid after &middot; accessible parking priority</li>
               <li><strong>Plaza Theatre Lot</strong> &middot; 696 Cleburne Terrace NE<br>$5 first hour, $1 each additional hour</li>
               <li><strong>Parking Deck</strong> &middot; 675 N Highland Ave NE<br>$5&ndash;$6 up to 2 hours, $14 max</li>
               <li><strong>Street Parking</strong> &middot; N Highland Ave &amp; side streets<br>Limited; avoid residents-only zones</li>
@@ -239,12 +257,13 @@
             <h3>How to Enter</h3>
             <ul>
               <li><strong>Main</strong> &middot; Grey door between Big Softie and Colette Bakeshop on N Highland Ave</li>
-              <li><strong>Side</strong> &middot; Black gate beside Otto&rsquo;s Apartment Hotel on Blue Ridge Ave (please keep noise down)</li>
+              <li><strong>Side</strong> &middot; Black gate beside Otto&rsquo;s Apartment Hotel on Blue Ridge Ave</li>
               <li><strong>Accessible</strong> &middot; Back alley from Otto&rsquo;s lot; call <a href="tel:+14044581738">(404) 458-1738</a> for an escort</li>
             </ul>
           </div>
         </details>
       </div>
+      <span class="schedule-icon" style="--icon: url('assets/champagne.svg')" aria-hidden="true"></span>
     </div>
   </div>
 
@@ -253,12 +272,26 @@
     <div class="schedule-event">
       <div>
         <span class="schedule-event-name">Wedding Ceremony &amp; Reception</span>
-        <span class="schedule-time">4:30pm</span>
-        <span class="schedule-event-detail">Ceremony begins at 4:30 in the afternoon</span>
+        <span class="schedule-event-detail" style="margin-bottom: 12px;">Ceremony begins promptly at 4:30, please arrive by 4:15</span>
         <span class="schedule-event-detail">Callanwolde Fine Arts Center</span>
         <span class="schedule-event-detail">980 Briarcliff Road Northeast</span>
         <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=Callanwolde+Fine+Arts+Center+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
-        <span class="schedule-event-detail schedule-attire">Attire: <a href="attire.html">Whimsical Garden Party</a></span>
+        <span class="schedule-event-detail schedule-attire">Attire: Garden Party Cocktail</span>
+        <span class="schedule-event-detail">While we love your little ones, our wedding will be an adults-only celebration.</span>
+        <details class="schedule-acc">
+          <summary>What to Wear</summary>
+          <div class="schedule-acc-body">
+            <p>Cocktail attire is preferred, but if you&rsquo;d like to join in on our whimsical garden party theme, we&rsquo;d love to see bright colors, florals, and fun prints!</p>
+            <h3>Our Colors</h3>
+            <div class="wear-colors"><span class="wear-color"><span class="wear-dot" style="background:#527b77"></span>Eucalyptus</span><span class="wear-color"><span class="wear-dot" style="background:#bce2d9"></span>Mint</span><span class="wear-color"><span class="wear-dot" style="background:#f58a76"></span>Coral</span><span class="wear-color"><span class="wear-dot" style="background:#fcc8af"></span>Peach</span><span class="wear-color"><span class="wear-dot" style="background:#b8d6ec"></span>Sky Blue</span><span class="wear-color"><span class="wear-dot" style="background:#9cabd7"></span>Periwinkle</span><span class="wear-color"><span class="wear-dot" style="background:#ceb6d7"></span>Lavender</span><span class="wear-color"><span class="wear-dot" style="background:#fde387"></span>Butter</span></div>
+            <h3>For Her</h3>
+            <p>Floral midi or maxi dresses, fun details like ruffles or puff sleeves, a colorful jumpsuit or two-piece set, and block heels, wedges, or dressy flats.</p>
+            <h3>For Him</h3>
+            <p>Suits in navy, light blue, tan, gray, or green, with a little color or pattern in your shirt, tie, bow tie, or pocket square. A classic suit works just as well!</p>
+            <h3>Good to Know</h3>
+            <p>Weather permitting, part of the celebration will be outdoors in a grassy area, so pick shoes you can walk and dance in. March evenings can get chilly, so bring a light layer.</p>
+          </div>
+        </details>
         <details class="schedule-acc">
           <summary>How to Get There</summary>
           <div class="schedule-acc-body">
@@ -273,6 +306,7 @@
           </div>
         </details>
       </div>
+      <span class="schedule-icon" style="--icon: url('assets/rings.svg')" aria-hidden="true"></span>
     </div>
   </div>
 
@@ -283,27 +317,29 @@
         <span class="schedule-event-name">Brunch</span>
         <span class="schedule-time">10:00am – 12:30pm</span>
         <span class="schedule-event-detail">The McClellan Home</span>
-        <span class="schedule-event-detail">147 Friar Tuck Road Northeast</span>
-        <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=147+Friar+Tuck+Road+NE+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
-        <span class="schedule-event-detail schedule-attire">Attire: Casual</span>
+        <span class="schedule-event-detail">1647 Friar Tuck Road Northeast</span>
+        <a class="schedule-map" href="https://www.google.com/maps/dir/?api=1&amp;destination=1647+Friar+Tuck+Road+NE+Atlanta+GA" target="_blank" rel="noopener">Directions</a>
+        <span class="schedule-event-detail schedule-attire">Attire: Brunch Casual</span>
+        <span class="schedule-event-detail">Children welcome</span>
         <span class="schedule-event-detail schedule-host">Generously hosted by Cathie and Jeff McClellan</span>
         <details class="schedule-acc">
           <summary>How to Get There</summary>
           <div class="schedule-acc-body">
             <ul>
-              <li><strong>Street Parking</strong> &middot; Friar Tuck Road<br>Free</li>
+              <li><strong>Street Parking</strong> &middot; Friar Tuck Road<br>Free street parking in the neighborhood</li>
             </ul>
           </div>
         </details>
       </div>
+      <span class="schedule-icon" style="--icon: url('assets/brunch.png')" aria-hidden="true"></span>
     </div>
   </div>
 </div>
 
 <footer>
-  <div class="footer-names">Abby &amp; Justin</div>
+  <div class="footer-names">love A &amp; J</div>
   <div class="footer-line"></div>
-  <div class="footer-sub">March 12, 2026 &nbsp;·&nbsp; Callanwolde Fine Arts Center</div>
+  <div class="footer-sub">March 12, 2027 &nbsp;·&nbsp; Callanwolde Fine Arts Center</div>
 </footer>
 
 <script>
