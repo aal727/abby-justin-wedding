@@ -94,6 +94,19 @@
   .hotel-perks li::before { content: ''; position: absolute; left: 0; top: 10px; width: 10px; height: 9px; background-color: #6b5a52; -webkit-mask: url('assets/heart.svg') center / contain no-repeat; mask: url('assets/heart.svg') center / contain no-repeat; }
   .hotel-block-note a { color: var(--warm-brown-dark); text-underline-offset: 3px; }
   .hotel-block-note strong { font-weight: 500; font-style: normal; }
+  .other-hotels { margin-top: 56px; }
+  .other-hotels-label { font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); }
+  .other-hotels-note { font-family: 'Jost', sans-serif; font-size: 0.92rem; font-weight: 300; color: var(--text-mid); line-height: 1.7; margin-top: 8px; }
+  .other-hotel { border-top: 1px solid #d3d3d3; padding: 20px 0; margin-top: 16px; }
+  .other-hotel:last-child { border-bottom: 1px solid #d3d3d3; }
+  .other-hotel + .other-hotel { margin-top: 0; }
+  .other-hotel .hotel-meta { margin-top: 2px; }
+  .other-hotel .hotel-detail { margin-top: 10px; font-size: 0.92rem; line-height: 1.7; }
+  .spot-link { display: inline-block; margin-top: 10px; font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); text-underline-offset: 3px; }
+  .hood-list { list-style: none; margin-top: 16px; border-top: 1px solid #d3d3d3; }
+  .hood-list li { border-bottom: 1px solid #d3d3d3; padding: 16px 0; }
+  .hood-name { display: block; font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 500; color: var(--text-dark); }
+  .hood-desc { display: block; font-family: 'Jost', sans-serif; font-size: 0.92rem; font-weight: 300; color: var(--text-mid); line-height: 1.7; margin-top: 4px; }
   @media (max-width: 640px) { .hotel-block { padding: 20px; } }
 
   footer { background: var(--warm-brown); padding: 80px 24px; text-align: center; }
@@ -190,6 +203,37 @@
         <div class="hotel-contact-label">Questions or Want to Book by Phone?</div>
         <a href="tel:+14047455000">(404) 745-5000</a> &middot; Mention the <strong>Larner/Haught Wedding</strong>
       </div>
+    </div>
+
+    <div class="other-hotels">
+      <h3 class="other-hotels-label">Other Great Options</h3>
+      <p class="other-hotels-note">We don&rsquo;t have room blocks at these hotels, so you&rsquo;ll book at their regular rates, but they&rsquo;re both great picks in Midtown.</p>
+      <div class="other-hotel">
+        <div class="hotel-name">Hampton Inn &amp; Suites Atlanta-Midtown</div>
+        <div class="hotel-meta">1231 West Peachtree St NE, Atlanta, GA 30309</div>
+        <p class="hotel-detail">A comfortable, budget-friendly stay in the middle of Midtown, with free hot breakfast every morning.</p>
+        <a class="spot-link" href="https://www.hilton.com/en/hotels/atlmnhx-hampton-suites-atlanta-midtown/" target="_blank" rel="noopener">View Hotel</a>
+      </div>
+      <div class="other-hotel">
+        <div class="hotel-name">Moxy Atlanta Midtown</div>
+        <div class="hotel-meta">48 13th St NE, Atlanta, GA 30309</div>
+        <p class="hotel-detail">A fun, affordable boutique hotel with a lively lobby bar, just steps from Midtown&rsquo;s restaurants and Piedmont Park.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Moxy+Atlanta+Midtown+48+13th+St+NE+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+    </div>
+
+    <div class="other-hotels">
+      <h3 class="other-hotels-label">Prefer an Airbnb?</h3>
+      <p class="other-hotels-note">These are our favorite neighborhoods to stay in. They&rsquo;re all close to the venue and to lots of our favorite spots.</p>
+      <ul class="hood-list">
+        <li><span class="hood-name">Inman Park</span><span class="hood-desc">Leafy streets, Victorian homes and some of our favorite restaurants, right on the BeltLine.</span></li>
+        <li><span class="hood-name">Virginia-Highland</span><span class="hood-desc">A walkable, charming neighborhood packed with bars, restaurants and boutiques.</span></li>
+        <li><span class="hood-name">Candler Park</span><span class="hood-desc">Quiet and tree-lined, with a laid-back neighborhood feel and easy access to Little Five Points.</span></li>
+        <li><span class="hood-name">Grant Park</span><span class="hood-desc">Historic homes around the city&rsquo;s oldest park, plus Zoo Atlanta and great spots on Memorial Drive.</span></li>
+        <li><span class="hood-name">Cabbagetown</span><span class="hood-desc">Colorful shotgun houses, murals and a cozy small-town vibe just off the BeltLine.</span></li>
+        <li><span class="hood-name">Poncey-Highland</span><span class="hood-desc">Right between Ponce City Market and the BeltLine, with lots to eat and drink nearby.</span></li>
+        <li><span class="hood-name">Midtown</span><span class="hood-desc">The heart of the city, close to Piedmont Park, the Botanical Garden and plenty of restaurants.</span></li>
+      </ul>
     </div>
   </div>
 
