@@ -76,9 +76,22 @@
   .spots-map .leaflet-tile-pane { filter: sepia(0.18) contrast(1.05); }
   .spots-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 12px; }
   .legend-item { display: inline-flex; align-items: center; gap: 8px; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid); }
-  .legend-heart, .pin-heart { display: inline-block; width: 14px; height: 12px; background-color: var(--c); -webkit-mask: url('assets/heart.svg') center / contain no-repeat; mask: url('assets/heart.svg') center / contain no-repeat; }
-  .spot-pin { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #fff9ee; border: 1.5px solid #517a76; box-shadow: 0 2px 6px rgba(45,63,58,0.25); }
-  .spot-pin .pin-heart { width: 15px; height: 13px; }
+  .legend-heart, .pin-heart { display: inline-block; width: 14px; height: 12px; background-color: #fff9ee; -webkit-mask: url('assets/heart.svg') center / contain no-repeat; mask: url('assets/heart.svg') center / contain no-repeat; }
+  .pin { display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--c); border: 2px solid #fff9ee; box-shadow: 0 2px 6px rgba(45,63,58,0.3); }
+  .pin.pin-spot { width: 30px; height: 30px; }
+  .pin.pin-spot .pin-heart { width: 14px; height: 12px; }
+  .pin.hotel { width: 32px; height: 32px; --c: #6b5a52; }
+  .pin.venue { width: 40px; height: 40px; --c: #6b5a52; }
+  .pin-icon { display: block; background-color: #fff9ee; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+  .pin.hotel .pin-icon { --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 22V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6h3a1 1 0 0 1 1 1v12h-6v-4h-4v4zm3-16v2h2V6zm4 0v2h2V6zm-4 4v2h2v-2zm4 0v2h2v-2zm-4 4v2h2v-2zm4 0v2h2v-2zm6-2v2h2v-2zm0 4v2h2v-2z'/%3E%3C/svg%3E"); }
+  .pin.venue .pin-icon { --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 4.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z'/%3E%3C/svg%3E"); }
+  .pin.hotel .pin-icon { width: 16px; height: 16px; }
+  .pin.venue .pin-icon { width: 22px; height: 22px; }
+  .legend-item .pin { box-shadow: none; border-width: 1.5px; }
+  .legend-item .pin.pin-spot, .legend-item .pin.hotel, .legend-item .pin.venue { width: 22px; height: 22px; }
+  .legend-item .pin .pin-heart { width: 10px; height: 9px; }
+  .legend-item .pin.hotel .pin-icon { width: 11px; height: 11px; }
+  .legend-item .pin.venue .pin-icon { width: 13px; height: 13px; }
   .spots-map .leaflet-popup-content-wrapper { background: #fff9ee; border-radius: 4px; box-shadow: 0 4px 14px rgba(45,63,58,0.18); }
   .spots-map .leaflet-popup-tip { background: #fff9ee; }
   .spots-map .leaflet-popup-content { margin: 12px 16px; font-family: 'Jost', sans-serif; }
@@ -313,9 +326,11 @@
   <div class="spots-block">
     <h2 class="spots-heading">Find Them on the Map</h2>
     <div class="spots-legend">
-      <span class="legend-item"><span class="legend-heart" style="--c:#f58a76"></span>Eat</span>
-      <span class="legend-item"><span class="legend-heart" style="--c:#517a76"></span>Drink</span>
-      <span class="legend-item"><span class="legend-heart" style="--c:#9cabd7"></span>Explore</span>
+      <span class="legend-item"><span class="pin pin-spot" style="--c:#f58a76"><span class="pin-heart"></span></span>Eat</span>
+      <span class="legend-item"><span class="pin pin-spot" style="--c:#517a76"><span class="pin-heart"></span></span>Drink</span>
+      <span class="legend-item"><span class="pin pin-spot" style="--c:#9cabd7"><span class="pin-heart"></span></span>Explore</span>
+      <span class="legend-item"><span class="pin venue"><span class="pin-icon"></span></span>Wedding Venue</span>
+      <span class="legend-item"><span class="pin hotel"><span class="pin-icon"></span></span>Our Hotels</span>
     </div>
     <div id="spots-map" class="spots-map" role="region" aria-label="Map of our favorite spots"></div>
   </div>
@@ -347,13 +362,29 @@
       var cat = el.closest('.spots-block').dataset.cat;
       var ll = [parseFloat(el.dataset.lat), parseFloat(el.dataset.lng)];
       var icon = L.divIcon({ className: '', iconSize: [30, 30], iconAnchor: [15, 15], popupAnchor: [0, -14],
-        html: '<span class="spot-pin"><span class="pin-heart" style="--c:' + colors[cat] + '"></span></span>' });
+        html: '<span class="pin pin-spot" style="--c:' + colors[cat] + '"><span class="pin-heart"></span></span>' });
       var link = el.querySelector('.spot-link');
       L.marker(ll, { icon: icon, title: el.querySelector('.spot-name').textContent }).addTo(map).bindPopup(
         '<div class="pop-name">' + el.querySelector('.spot-name').innerHTML + '</div>' +
         '<div class="pop-meta">' + el.querySelector('.spot-meta').innerHTML + '</div>' +
         '<a class="pop-link" href="' + link.href + '" target="_blank" rel="noopener">Open in Maps</a>');
       bounds.push(ll);
+    });
+    var places = [
+      { name: 'Callanwolde Fine Arts Center', meta: 'Wedding Venue', kind: 'venue', ll: [33.7798, -84.3408],
+        href: 'https://www.google.com/maps/search/?api=1&query=Callanwolde+Fine+Arts+Center+Atlanta+GA', label: 'Open in Maps' },
+      { name: 'Hotel Clermont', meta: 'Room Block', kind: 'hotel', ll: [33.7748, -84.3612], href: 'travel.html', label: 'Booking Details' },
+      { name: 'Loews Atlanta Hotel', meta: 'Room Block', kind: 'hotel', ll: [33.7843, -84.3838], href: 'travel.html', label: 'Booking Details' }
+    ];
+    places.forEach(function (p) {
+      var size = p.kind === 'venue' ? 40 : 32;
+      var icon = L.divIcon({ className: '', iconSize: [size, size], iconAnchor: [size / 2, size / 2], popupAnchor: [0, -size / 2],
+        html: '<span class="pin ' + p.kind + '"><span class="pin-icon"></span></span>' });
+      var ext = p.href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '';
+      L.marker(p.ll, { icon: icon, title: p.name, zIndexOffset: p.kind === 'venue' ? 1000 : 500 }).addTo(map).bindPopup(
+        '<div class="pop-name">' + p.name + '</div><div class="pop-meta">' + p.meta + '</div>' +
+        '<a class="pop-link" href="' + p.href + '"' + ext + '>' + p.label + '</a>');
+      bounds.push(p.ll);
     });
     map.fitBounds(bounds, { padding: [30, 30] });
     map.on('click', function () { map.scrollWheelZoom.enable(); });
