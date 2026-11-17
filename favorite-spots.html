@@ -99,6 +99,7 @@
   .pop-meta { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: #517a76; margin-top: 3px; }
   .pop-link { display: inline-block; margin-top: 8px; font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: #517a76 !important; text-underline-offset: 3px; }
   .spots-map .leaflet-control-zoom a { background: #fff9ee; color: #517a76; border-color: rgba(81,122,118,0.25); }
+  .spots-block .spots-map.leaflet-gesture-handling-touch-warning::after, .spots-block .spots-map.leaflet-gesture-handling-scroll-warning::after { font-family: 'Jost', sans-serif; font-size: 0.95rem; letter-spacing: 0.04em; background: rgba(81,122,118,0.55); }
   .spots-map .leaflet-control-attribution { background: rgba(255,249,238,0.85); font-family: 'Jost', sans-serif; font-size: 0.6rem; }
   @media (max-width: 640px) { .page-content { padding: 56px 20px; } .spots-map { height: 380px; } }
 
@@ -115,6 +116,7 @@
   .page-hero .page-title, .page-hero .page-subtitle { color: #517a76; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.css">
 <link rel="stylesheet" href="nav-mobile.css">
 <link rel="stylesheet" href="page-header.css">
 </head>
@@ -348,11 +350,12 @@
   window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.js"></script>
 <script>
   (function () {
     if (!window.L) return;
     var colors = { eat: '#f58a76', drink: '#517a76', explore: '#9cabd7' };
-    var map = L.map('spots-map', { scrollWheelZoom: false, maxZoom: 16 });
+    var map = L.map('spots-map', { gestureHandling: true, maxZoom: 16 });
     var esri = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
     L.tileLayer(esri + 'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'
@@ -388,7 +391,6 @@
       bounds.push(p.ll);
     });
     map.fitBounds(bounds, { padding: [30, 30] });
-    map.on('click', function () { map.scrollWheelZoom.enable(); });
   })();
 </script>
 <script src="nav-mobile.js"></script>
