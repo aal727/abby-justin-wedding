@@ -58,17 +58,36 @@
   .spots-intro { font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 300; color: var(--text-mid); line-height: 1.8; text-align: center; margin-bottom: 56px; }
   .spots-block { margin-bottom: 56px; }
   .spots-heading { font-family: deseo-medium, sans-serif; font-size: 2rem; font-weight: 300; color: var(--warm-brown-dark); margin-bottom: 8px; }
-  .spots-subheading { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); margin: 28px 0 12px; }
-  .spot + .spots-subheading { margin-top: 36px; }
+  .spots-acc { border-bottom: 1px solid #d3d3d3; }
+  .spots-heading + .spots-acc { margin-top: 12px; border-top: 1px solid #d3d3d3; }
+  .spots-acc summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 16px 0; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); }
+  .spots-acc summary::-webkit-details-marker { display: none; }
+  .spots-acc summary::after { content: '+'; font-size: 1.2rem; font-weight: 300; letter-spacing: 0; transition: transform 0.2s; }
+  .spots-acc[open] summary::after { transform: rotate(45deg); }
+  .spots-acc .spot:last-child { border-bottom: none; }
+  .spots-acc[open] { padding-bottom: 8px; }
   .spot { border-top: 1px solid #d3d3d3; padding: 20px 0; }
   .spot:last-child { border-bottom: 1px solid #d3d3d3; }
   .spot-name { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 500; color: var(--text-dark); }
   .spot-meta { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mid); margin-top: 4px; }
   .spot-desc { font-family: 'Jost', sans-serif; font-size: 0.92rem; font-weight: 300; color: var(--text-mid); line-height: 1.7; margin-top: 10px; }
   .spot-link { display: inline-block; margin-top: 10px; font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-brown-dark); text-underline-offset: 3px; }
-  .spots-map { margin-top: 16px; }
-  .spots-map iframe { display: block; width: 100%; height: 480px; border: 1px solid rgba(81,122,118,0.3); }
-  @media (max-width: 640px) { .page-content { padding: 56px 20px; } .spots-map iframe { height: 360px; } }
+  .spots-map { margin-top: 16px; height: 480px; border: 1px solid rgba(81,122,118,0.3); border-radius: 4px; overflow: hidden; background: #f3efe4; }
+  .spots-map .leaflet-tile-pane { filter: sepia(0.18) contrast(1.05); }
+  .spots-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 12px; }
+  .legend-item { display: inline-flex; align-items: center; gap: 8px; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid); }
+  .legend-heart, .pin-heart { display: inline-block; width: 14px; height: 12px; background-color: var(--c); -webkit-mask: url('assets/heart.svg') center / contain no-repeat; mask: url('assets/heart.svg') center / contain no-repeat; }
+  .spot-pin { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #fff9ee; border: 1.5px solid #517a76; box-shadow: 0 2px 6px rgba(45,63,58,0.25); }
+  .spot-pin .pin-heart { width: 15px; height: 13px; }
+  .spots-map .leaflet-popup-content-wrapper { background: #fff9ee; border-radius: 4px; box-shadow: 0 4px 14px rgba(45,63,58,0.18); }
+  .spots-map .leaflet-popup-tip { background: #fff9ee; }
+  .spots-map .leaflet-popup-content { margin: 12px 16px; font-family: 'Jost', sans-serif; }
+  .pop-name { font-size: 0.95rem; font-weight: 500; color: #6b5a52; }
+  .pop-meta { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: #517a76; margin-top: 3px; }
+  .pop-link { display: inline-block; margin-top: 8px; font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: #517a76 !important; text-underline-offset: 3px; }
+  .spots-map .leaflet-control-zoom a { background: #fff9ee; color: #517a76; border-color: rgba(81,122,118,0.25); }
+  .spots-map .leaflet-control-attribution { background: rgba(255,249,238,0.85); font-family: 'Jost', sans-serif; font-size: 0.6rem; }
+  @media (max-width: 640px) { .page-content { padding: 56px 20px; } .spots-map { height: 380px; } }
 
   footer { background: var(--warm-brown); padding: 80px 24px; text-align: center; }
   .footer-names { font-family: deseo-medium, sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; font-style: italic; color: var(--warm-brown-dark); line-height: 1.05; margin-bottom: 24px; opacity: 0.9; }
@@ -82,6 +101,7 @@
   footer .footer-names::before { content: ''; display: inline-block; width: 18px; height: 16px; margin-right: 12px; vertical-align: middle; background-color: #517a76; -webkit-mask: url('assets/heart.svg') center / contain no-repeat; mask: url('assets/heart.svg') center / contain no-repeat; }
   .page-hero .page-title, .page-hero .page-subtitle { color: #517a76; }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="nav-mobile.css">
 <link rel="stylesheet" href="page-header.css">
 </head>
@@ -107,111 +127,197 @@
 <div class="page-content">
   <p class="spots-intro">Coming in early or staying the weekend? Here are a few of the places we love most around Atlanta.</p>
 
-  <div class="spots-block">
+  <div class="spots-block" data-cat="eat">
     <h2 class="spots-heading">Eat</h2>
-    <h3 class="spots-subheading">Breakfast &amp; Pastries</h3>
-      <div class="spot">
+    <details class="spots-acc">
+      <summary>Breakfast &amp; Pastries</summary>
+      <div class="spot" data-lat="33.746078" data-lng="-84.3727959">
         <div class="spot-name">Little Tart Bakeshop</div>
         <div class="spot-meta">Pastries</div>
         <p class="spot-desc">Our go-to for pastries. Grab a coffee and a little something sweet to start the day.</p>
-        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Little+Tart+Bakeshop+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Little+Tart+Bakeshop+437+Memorial+Dr+SE+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-      <div class="spot">
-        <div class="spot-name">Evergreen Butcher + Bakery</div>
+      <div class="spot" data-lat="33.7510205" data-lng="-84.3217822">
+        <div class="spot-name">Evergreen Butcher &amp; Baker</div>
         <div class="spot-meta">Pastries &amp; Breakfast</div>
         <p class="spot-desc">Incredible pastries and breakfast. Get there early, because they sell out!</p>
-        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Evergreen+Butcher+%2B+Bakery+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Evergreen+Butcher+%26+Baker+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-    <h3 class="spots-subheading">Lunch</h3>
-      <div class="spot">
+    </details>
+    <details class="spots-acc">
+      <summary>Lunch</summary>
+      <div class="spot" data-lat="33.7468699" data-lng="-84.357988">
         <div class="spot-name">Muchacho</div>
         <div class="spot-meta">Any Meal &amp; Coffee</div>
         <p class="spot-desc">Honestly good for any meal of the day, plus great coffee.</p>
         <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Muchacho+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-      <div class="spot">
+      <div class="spot" data-lat="33.7571021" data-lng="-84.3641809">
         <div class="spot-name">Superica</div>
         <div class="spot-meta">Great Atmosphere</div>
         <p class="spot-desc">Right on the BeltLine with a fantastic atmosphere. Perfect for a long, lazy lunch.</p>
-        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Superica+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Superica+Krog+Street+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-    <h3 class="spots-subheading">Dinner</h3>
-      <div class="spot">
+    </details>
+    <details class="spots-acc">
+      <summary>Dinner</summary>
+      <div class="spot" data-lat="33.7495243" data-lng="-84.3678914">
         <div class="spot-name">Jen Chan&rsquo;s</div>
         <div class="spot-meta">Reservations Recommended</div>
         <p class="spot-desc">One of our favorite dinners in the city. Be sure to book in advance.</p>
-        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Jen+Chan%26rsquo%3Bs+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Jen+Chan%27s+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-      <div class="spot">
+      <div class="spot" data-lat="33.7623" data-lng="-84.3588">
         <div class="spot-name">Beetlecat</div>
         <div class="spot-meta">Dinner</div>
         <p class="spot-desc">[A sentence or two about why you love it.]</p>
         <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Beetlecat+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-      <div class="spot">
+      <div class="spot" data-lat="33.7705" data-lng="-84.3683">
         <div class="spot-name">Ruby Chow&rsquo;s</div>
         <div class="spot-meta">Dinner</div>
         <p class="spot-desc">[A sentence or two about why you love it.]</p>
-        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Ruby+Chow%27s+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Ruby+Chow%27s+620+Glen+Iris+Dr+NE+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-      <div class="spot">
-        <div class="spot-name">Bocca Lupo</div>
+      <div class="spot" data-lat="33.7547752" data-lng="-84.3627599">
+        <div class="spot-name">BoccaLupo</div>
         <div class="spot-meta">Reservations Required</div>
         <p class="spot-desc">[A sentence or two about why you love it.]</p>
-        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Bocca+Lupo+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=BoccaLupo+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-      <div class="spot">
+      <div class="spot" data-lat="33.7638706" data-lng="-84.368308">
         <div class="spot-name">a Mano</div>
         <div class="spot-meta">Reservations Required</div>
         <p class="spot-desc">[A sentence or two about why you love it.]</p>
         <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=a+Mano+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
+    </details>
   </div>
 
-  <div class="spots-block">
+  <div class="spots-block" data-cat="drink">
     <h2 class="spots-heading">Drink</h2>
-      <div class="spot">
+    <details class="spots-acc">
+      <summary>Coffee</summary>
+      <div class="spot" data-lat="33.7512273" data-lng="-84.3094029">
+        <div class="spot-name">Perc</div>
+        <div class="spot-meta">Coffee</div>
+        <p class="spot-desc">Our favorite cup of coffee in East Lake.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Perc+Coffee+2380+Hosea+L+Williams+Dr+SE+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+      <div class="spot" data-lat="33.7566" data-lng="-84.356">
+        <div class="spot-name">Stereo</div>
+        <div class="spot-meta">Coffee</div>
+        <p class="spot-desc">Great coffee by day and DJ nights later in the week.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Stereo+900+DeKalb+Ave+NE+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+    </details>
+    <details class="spots-acc">
+      <summary>Cocktails</summary>
+      <div class="spot" data-lat="33.7406916" data-lng="-84.3578101">
+        <div class="spot-name">Vesper</div>
+        <div class="spot-meta">Our First Date Spot</div>
+        <p class="spot-desc">Where it all began! Vesper was the spot for our very first date, so it will always hold a special place in our hearts.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Vesper+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+      <div class="spot" data-lat="33.7466" data-lng="-84.3576">
         <div class="spot-name">Tiger Sun</div>
         <div class="spot-meta">Reservations Recommended</div>
         <p class="spot-desc">A fancy cocktail experience you won&rsquo;t forget. Be sure to book in advance.</p>
         <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Tiger+Sun+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-      <div class="spot">
-        <div class="spot-name">New Realm Brewing</div>
-        <div class="spot-meta">Rooftop &amp; Beer</div>
-        <p class="spot-desc">Great beer and a rooftop that&rsquo;s hard to beat on a nice day.</p>
-        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=New+Realm+Brewing+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
-      </div>
-      <div class="spot">
+      <div class="spot" data-lat="33.759606" data-lng="-84.3642227">
         <div class="spot-name">Ladybird Grove &amp; Mess Hall</div>
         <div class="spot-meta">Drinks &amp; Atmosphere</div>
         <p class="spot-desc">The perfect spot to grab a drink and soak up the atmosphere.</p>
         <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Ladybird+Grove+%26+Mess+Hall+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
+    </details>
+    <details class="spots-acc">
+      <summary>Beer</summary>
+      <div class="spot" data-lat="33.7690299" data-lng="-84.3619541">
+        <div class="spot-name">New Realm Brewing</div>
+        <div class="spot-meta">Rooftop &amp; Beer</div>
+        <p class="spot-desc">Great beer and a rooftop that&rsquo;s hard to beat on a nice day.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=New+Realm+Brewing+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+    </details>
   </div>
 
-  <div class="spots-block">
+  <div class="spots-block" data-cat="explore">
     <h2 class="spots-heading">Explore</h2>
-      <div class="spot">
-        <div class="spot-name">[Spot name]</div>
-        <div class="spot-meta">[Neighborhood]</div>
-        <p class="spot-desc">[A sentence or two about why you love it.]</p>
-        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+    <details class="spots-acc">
+      <summary>Great for All</summary>
+      <div class="spot" data-lat="33.7716" data-lng="-84.3631">
+        <div class="spot-name">Atlanta BeltLine</div>
+        <div class="spot-meta">Walk, Bike &amp; Wander</div>
+        <p class="spot-desc">Our favorite way to see the city. Walk or bike the Eastside Trail past murals, shops, restaurants and parks, and stop wherever looks good.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Atlanta+BeltLine+Eastside+Trail+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
-      <div class="spot">
-        <div class="spot-name">[Spot name]</div>
-        <div class="spot-meta">[Neighborhood]</div>
-        <p class="spot-desc">[A sentence or two about why you love it.]</p>
-        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      <div class="spot" data-lat="33.7856" data-lng="-84.3738">
+        <div class="spot-name">Piedmont Park</div>
+        <div class="spot-meta">Midtown</div>
+        <p class="spot-desc">Atlanta&rsquo;s backyard. Bring a coffee, take a stroll around the lake and enjoy the skyline views.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Piedmont+Park+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
       </div>
+      <div class="spot" data-lat="33.79" data-lng="-84.3727">
+        <div class="spot-name">Atlanta Botanical Garden</div>
+        <div class="spot-meta">Midtown</div>
+        <p class="spot-desc">Beautiful gardens right next to Piedmont Park, with a canopy walk through the treetops. Lovely for all ages.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Atlanta+Botanical+Garden+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+    </details>
+    <details class="spots-acc">
+      <summary>Great with Kids</summary>
+      <div class="spot" data-lat="33.732598" data-lng="-84.3710376">
+        <div class="spot-name">Zoo Atlanta</div>
+        <div class="spot-meta">Grant Park</div>
+        <p class="spot-desc">Pandas, gorillas and plenty more. A great outing for the little ones.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Zoo+Atlanta+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+      <div class="spot" data-lat="33.7632675" data-lng="-84.3951173">
+        <div class="spot-name">Georgia Aquarium</div>
+        <div class="spot-meta">Downtown</div>
+        <p class="spot-desc">One of the largest aquariums in the world, with whale sharks, belugas and more. A guaranteed hit with kids.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Georgia+Aquarium+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+      <div class="spot" data-lat="33.7739" data-lng="-84.3279">
+        <div class="spot-name">Fernbank Museum</div>
+        <div class="spot-meta">Druid Hills</div>
+        <p class="spot-desc">Giant dinosaurs, hands-on exhibits and outdoor nature trails. Perfect for curious little ones.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Fernbank+Museum+of+Natural+History+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+      <div class="spot" data-lat="33.7926" data-lng="-84.3892">
+        <div class="spot-name">Center for Puppetry Arts</div>
+        <div class="spot-meta">Midtown</div>
+        <p class="spot-desc">Puppet shows, a hands-on museum and make-your-own puppet workshops. A one-of-a-kind outing for kids.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Center+for+Puppetry+Arts+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+    </details>
+    <details class="spots-acc">
+      <summary>Games &amp; Nightlife</summary>
+      <div class="spot" data-lat="33.8032" data-lng="-84.4241">
+        <div class="spot-name">Your 3rd Spot</div>
+        <div class="spot-meta">Games, Food &amp; Drinks</div>
+        <p class="spot-desc">Games, food and drinks all under one roof at The Works. A great way to spend an afternoon or evening with friends.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Your+3rd+Spot+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+      <div class="spot" data-lat="33.7598" data-lng="-84.3612">
+        <div class="spot-name">Painted Park</div>
+        <div class="spot-meta">Games on the BeltLine &middot; 21+</div>
+        <p class="spot-desc">Games, food and drinks right on the BeltLine. This one is 21 and up.</p>
+        <a class="spot-link" href="https://www.google.com/maps/search/?api=1&amp;query=Painted+Park+Atlanta+GA" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+    </details>
   </div>
 
   <div class="spots-block">
     <h2 class="spots-heading">Find Them on the Map</h2>
-    <div class="spots-map">
-      <!-- Replace src with the embed link from our Google My Maps list -->
-      <iframe src="https://maps.google.com/maps?q=Atlanta%2C%20GA&amp;z=12&amp;output=embed" title="Map of our favorite spots" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    <div class="spots-legend">
+      <span class="legend-item"><span class="legend-heart" style="--c:#f58a76"></span>Eat</span>
+      <span class="legend-item"><span class="legend-heart" style="--c:#517a76"></span>Drink</span>
+      <span class="legend-item"><span class="legend-heart" style="--c:#9cabd7"></span>Explore</span>
     </div>
+    <div id="spots-map" class="spots-map" role="region" aria-label="Map of our favorite spots"></div>
   </div>
 </div>
 
@@ -224,6 +330,34 @@
 <script>
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+  (function () {
+    if (!window.L) return;
+    var colors = { eat: '#f58a76', drink: '#517a76', explore: '#9cabd7' };
+    var map = L.map('spots-map', { scrollWheelZoom: false, maxZoom: 16 });
+    var esri = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
+    L.tileLayer(esri + 'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    L.tileLayer(esri + 'World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, pane: 'shadowPane' }).addTo(map);
+    var bounds = [];
+    document.querySelectorAll('.spots-block[data-cat] .spot[data-lat]').forEach(function (el) {
+      var cat = el.closest('.spots-block').dataset.cat;
+      var ll = [parseFloat(el.dataset.lat), parseFloat(el.dataset.lng)];
+      var icon = L.divIcon({ className: '', iconSize: [30, 30], iconAnchor: [15, 15], popupAnchor: [0, -14],
+        html: '<span class="spot-pin"><span class="pin-heart" style="--c:' + colors[cat] + '"></span></span>' });
+      var link = el.querySelector('.spot-link');
+      L.marker(ll, { icon: icon, title: el.querySelector('.spot-name').textContent }).addTo(map).bindPopup(
+        '<div class="pop-name">' + el.querySelector('.spot-name').innerHTML + '</div>' +
+        '<div class="pop-meta">' + el.querySelector('.spot-meta').innerHTML + '</div>' +
+        '<a class="pop-link" href="' + link.href + '" target="_blank" rel="noopener">Open in Maps</a>');
+      bounds.push(ll);
+    });
+    map.fitBounds(bounds, { padding: [30, 30] });
+    map.on('click', function () { map.scrollWheelZoom.enable(); });
+  })();
 </script>
 <script src="nav-mobile.js"></script>
 </body>
