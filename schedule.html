@@ -207,6 +207,14 @@
   .schedule-day-label { padding-left: 202px; }
   @media (max-width: 640px) { .schedule-icon { order: -1; flex: none; width: 100px; height: 100px; } }
   @media (max-width: 640px) { .schedule-day-label { padding-left: 0; } }
+  /* Mobile: drawing sits above the date, and everything but the accordions is centered */
+  @media (max-width: 640px) {
+    .schedule-day { display: flex; flex-direction: column; text-align: center; }
+    .schedule-event { display: contents; }
+    .schedule-icon { order: -1; align-self: center; margin-bottom: 16px; }
+    .schedule-event > div { margin-top: 8px; }
+    .schedule-acc { text-align: left; }
+  }
   .schedule-acc-body p + p, .schedule-acc-body p + h3 { margin-top: 14px; }
   .wear-colors { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 8px; }
   .wear-color { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; }
@@ -222,7 +230,7 @@
     <a href="index.html" class="nav-link">Home</a>
     <a href="schedule.html" class="nav-link active">Schedule</a>
     <a href="travel.html" class="nav-link">Travel</a>
-    <a href="favorite-spots.html" class="nav-link">Favorite Spots</a>
+    <a href="favorite-spots.html" class="nav-link">Our Favorite Spots</a>
     <a href="faq.html" class="nav-link">FAQ</a>
     <a href="registry.html" class="nav-link">Registry</a>
     <a href="rsvp.html" class="nav-rsvp">RSVP</a>
