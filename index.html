@@ -850,19 +850,16 @@
     /* Schedule drawings: one upright icon above each item instead of corners.
        Heights differ because the rings file has lots of built-in empty space. */
     .story-section { padding: 64px 16px 72px; }
+    /* Just one photo (the engagement kiss) above the title on phones */
     .gallery-wall {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       grid-template-areas:
-        "p1 p2"
-        "p3 p3"
-        "title title";
-      column-gap: 4px;
+        "p2"
+        "title";
     }
-    .gallery-item { padding: 7px 7px 28px; }
-    .gi-3 { width: 50%; }
-    .gi-1 { --dx: 6px;  --dy: 8px; }
-    .gi-2 { --dx: -6px; --dy: 20px; }
-    .gi-3 { --dx: 0;    --dy: -6px; }
+    .gi-1, .gi-3 { display: none; }
+    .gallery-item { padding: 8px 8px 30px; }
+    .gi-2 { width: 68%; --dx: 0; --dy: 0; }
     /* Story photos: a little bigger on phones, just slightly overlapping */
     .story-row { row-gap: 22px; }
     .story-row + .story-row { margin-top: 36px; }
