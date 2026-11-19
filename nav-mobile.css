@@ -2,6 +2,11 @@
    The menu panel lives outside <nav> because the nav's wavy mask
    (and its drop-shadow filter when scrolled) would clip anything inside it. */
 
+/* Mint behind the page so the iPhone "bounce" past the top and bottom
+   blends into the mint header and footer instead of showing a cream band.
+   Each page's body keeps its own cream background. */
+html { background: #e7f7f0; }
+
 .nav-toggle,
 .mobile-menu { display: none; }
 
