@@ -870,8 +870,10 @@
     .story-photo-l { margin-right: -7%; }
     .story-photo-r { margin-left: -7%; margin-top: 18px; }
     .story-row:nth-child(even) .story-photo-l { margin-top: 18px; }
-    .memory-wall { grid-template-columns: repeat(3, 1fr); gap: 20px 10px; margin-top: 56px; }
-    .memory-photo { padding: 5px 5px 18px; }
+    .memory-wall { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; margin-top: 56px; padding: 0 6px; }
+    .memory-photo { padding: 6px 6px 22px; }
+    /* An odd photo out at the end sits centered on its own row */
+    .memory-photo:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
     .memory-photo:nth-child(even) { translate: 0 10px; }
     .gallery-title { padding: 36px 0 28px; }
     .gallery-title-our { font-size: 1.15rem; }
