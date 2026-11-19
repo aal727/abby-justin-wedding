@@ -416,11 +416,11 @@
   }
   .story-row {
     display: grid;
-    grid-template-columns: 190px minmax(0, 600px) 190px;
+    grid-template-columns: 240px minmax(0, 560px) 240px;
     grid-template-areas: "l text r";
     justify-content: center;
     align-items: center;
-    column-gap: 48px;
+    column-gap: 40px;
   }
   .story-row + .story-row { margin-top: 40px; }
   .story-row > p { grid-area: text; }
@@ -869,7 +869,12 @@
       row-gap: 22px;
     }
     .story-row + .story-row { margin-top: 36px; }
-    .story-photo { width: 78%; justify-self: center; padding: 6px 6px 22px; }
+    /* Bigger, and tucked into each other in the middle */
+    .story-photo { width: 108%; padding: 6px 6px 22px; }
+    .story-photo-l { justify-self: end; margin-right: -20%; z-index: 1; }
+    .story-photo-r { justify-self: start; margin-left: -20%; margin-top: 18px; }
+    .story-row:nth-child(even) .story-photo-l { z-index: 0; margin-top: 18px; }
+    .story-row:nth-child(even) .story-photo-r { z-index: 1; margin-top: 0; }
     .memory-wall { grid-template-columns: repeat(3, 1fr); gap: 20px 10px; margin-top: 56px; }
     .memory-photo { padding: 5px 5px 18px; }
     .memory-photo:nth-child(even) { translate: 0 10px; }
@@ -995,7 +1000,7 @@
 <div class="story-section">
   <div class="gallery-wall reveal">
     <figure class="gallery-item gi-1" style="--r:-5deg"><img src="assets/story/gatsby-party.jpg" alt="Abby and Justin in Halloween costumes" loading="lazy"></figure>
-    <figure class="gallery-item gi-2" style="--r:3deg"><img src="assets/story/engagement-kiss-bw.jpg" alt="Black and white engagement photo of Abby and Justin" loading="lazy"></figure>
+    <figure class="gallery-item gi-2" style="--r:3deg"><img src="assets/story/engagement-kiss-bw.jpg" alt="Black and white engagement photo of Abby and Justin" style="object-position: 50% 12%" loading="lazy"></figure>
     <figure class="gallery-item gi-3" style="--r:-2deg"><img src="assets/story/brewery.jpg" alt="Abby and Justin at a brewery" loading="lazy"></figure>
     <div class="gallery-title">
       <span class="gallery-title-our">Our</span>
