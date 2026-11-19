@@ -380,8 +380,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
       "p1 p2 p3"
-      "title title title"
-      "p4 p5 p6";
+      "title title title";
     align-items: center;
     justify-items: center;
     column-gap: 8px;
@@ -397,19 +396,51 @@
     box-shadow: 0 2px 4px rgba(81, 122, 118, 0.12), 0 10px 24px rgba(81, 122, 118, 0.14);
     transform: translate(var(--dx, 0), var(--dy, 0)) rotate(var(--r, 0deg));
   }
-  .gallery-item picture { display: block; aspect-ratio: 1; }
-  .gallery-item img {
+  .gallery-item, .story-photo, .memory-photo { margin: 0; }
+  .gallery-item img, .story-photo img, .memory-photo img {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     display: block;
   }
-  .gi-1 { grid-area: p1; --r: -5deg; --dx: 18px;  --dy: 10px; }
-  .gi-2 { grid-area: p2; --r: 3deg;  --dy: 36px;  z-index: 1; }
-  .gi-3 { grid-area: p3; --r: -2deg; --dx: -18px; --dy: -4px; }
-  .gi-4 { grid-area: p4; --r: 4deg;  --dx: 18px;  --dy: 6px; }
-  .gi-5 { grid-area: p5; --r: -3deg; --dy: -30px; z-index: 1; }
-  .gi-6 { grid-area: p6; --r: 2deg;  --dx: -18px; --dy: 14px; }
+  .gi-1 { grid-area: p1; --dx: 18px;  --dy: 10px; }
+  .gi-2 { grid-area: p2; --dy: 36px;  z-index: 1; }
+  .gi-3 { grid-area: p3; --dx: -18px; --dy: -4px; }
+
+  /* Polaroids beside each paragraph of the story */
+  .story-photo, .memory-photo {
+    background: #fff;
+    padding: 9px 9px 32px;
+    box-shadow: 0 2px 4px rgba(81, 122, 118, 0.12), 0 10px 24px rgba(81, 122, 118, 0.14);
+    transform: rotate(var(--r, 0deg));
+  }
+  .story-row {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 600px) 190px;
+    grid-template-areas: "l text r";
+    justify-content: center;
+    align-items: center;
+    column-gap: 48px;
+  }
+  .story-row + .story-row { margin-top: 40px; }
+  .story-row > p { grid-area: text; }
+  .story-photo-l { grid-area: l; }
+  .story-photo-r { grid-area: r; }
+  /* Stagger the side photos so they feel scattered, not lined up */
+  @media (min-width: 861px) {
+    .story-row:nth-child(odd) .story-photo-l, .story-row:nth-child(even) .story-photo-r { translate: 0 -16px; }
+    .story-row:nth-child(even) .story-photo-l, .story-row:nth-child(odd) .story-photo-r { translate: 0 20px; }
+  }
+
+  /* The rest of the photos, scattered below the story */
+  .memory-wall {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 36px 28px;
+    max-width: 1080px;
+    margin: 96px auto 0;
+  }
+  .memory-photo:nth-child(even) { translate: 0 18px; }
 
   .gallery-title {
     grid-area: title;
@@ -435,15 +466,14 @@
     margin-top: 4px;
   }
   .story-text {
-    max-width: 620px;
-    margin: 36px auto 0;
+    max-width: 1120px;
+    margin: 40px auto 0;
     font-family: 'Jost', sans-serif;
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.8;
     color: var(--text-mid);
   }
-  .story-text p + p { margin-top: 18px; }
 
   /* TIMELINE */
   .timeline-section {
@@ -823,19 +853,26 @@
       grid-template-areas:
         "p1 p2"
         "p3 p3"
-        "title title"
-        "p4 p4"
-        "p5 p6";
+        "title title";
       column-gap: 4px;
     }
     .gallery-item { padding: 7px 7px 28px; }
-    .gi-3, .gi-4 { width: 50%; }
-    .gi-1 { --r: -5deg; --dx: 6px;  --dy: 8px; }
-    .gi-2 { --r: 4deg;  --dx: -6px; --dy: 20px; }
-    .gi-3 { --r: -2deg; --dx: 0;    --dy: -6px; }
-    .gi-4 { --r: 3deg;  --dx: 0;    --dy: 6px; }
-    .gi-5 { --r: -4deg; --dx: 6px;  --dy: -8px; }
-    .gi-6 { --r: 3deg;  --dx: -6px; --dy: 12px; }
+    .gi-3 { width: 50%; }
+    .gi-1 { --dx: 6px;  --dy: 8px; }
+    .gi-2 { --dx: -6px; --dy: 20px; }
+    .gi-3 { --dx: 0;    --dy: -6px; }
+    /* Story photos sit in a pair under each paragraph */
+    .story-row {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "text text" "l r";
+      column-gap: 14px;
+      row-gap: 22px;
+    }
+    .story-row + .story-row { margin-top: 36px; }
+    .story-photo { width: 78%; justify-self: center; padding: 6px 6px 22px; }
+    .memory-wall { grid-template-columns: repeat(3, 1fr); gap: 20px 10px; margin-top: 56px; }
+    .memory-photo { padding: 5px 5px 18px; }
+    .memory-photo:nth-child(even) { translate: 0 10px; }
     .gallery-title { padding: 36px 0 28px; }
     .gallery-title-our { font-size: 1.15rem; }
     .gallery-title-love { font-size: 3rem; }
@@ -957,23 +994,57 @@
 <!-- OUR STORY -->
 <div class="story-section">
   <div class="gallery-wall reveal">
-    <div class="gallery-item gi-1"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-1.jpg"><img src="assets/abby&justin.JPG" alt="" loading="lazy"></picture></div>
-    <div class="gallery-item gi-2"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-2.jpg"><img src="assets/j&a.JPG" alt="" loading="lazy"></picture></div>
+    <figure class="gallery-item gi-1" style="--r:-5deg"><img src="assets/story/silly-selfie.jpg" alt="Abby and Justin making silly faces" loading="lazy"></figure>
+    <figure class="gallery-item gi-2" style="--r:3deg"><img src="assets/story/park-steps-dog.jpg" alt="Abby and Justin on stone steps with their dog" loading="lazy"></figure>
+    <figure class="gallery-item gi-3" style="--r:-2deg"><img src="assets/story/brewery.jpg" alt="Abby and Justin at a brewery" loading="lazy"></figure>
     <div class="gallery-title">
       <span class="gallery-title-our">Our</span>
       <span class="gallery-title-love">Love Story</span>
       <div class="story-text">
-        <p>We met on a sunny afternoon in Atlanta at a singles tennis event hosted by Abby&rsquo;s company, Green Flag. Funny enough, we never actually spoke that day, but we both saw each other in passing and left with enough of a good vibe to want to connect afterward.</p>
-        <p>On our first date, we quickly realized how much we had in common. We discovered we had mutual friends, shared similar goals and dreams for the future, and both loved game nights with our families. By our second date, we&rsquo;d discovered we were both Swifties. We had so much fun together and connected on so many different things that one date turned into another, and before long, we were spending most of our free time together.</p>
-        <p>One of our first trips was to Asheville, where we got a glimpse of what life together might look like beyond our usual routines in Atlanta. Over the next several months, we met each other&rsquo;s families, traveled together, hosted plenty of game nights, and eventually moved in together. It all happened pretty naturally, and we found ourselves building the kind of life we&rsquo;d both always wanted.</p>
-        <p>On our one-year anniversary, Justin proposed at sunset on the beach in Cape Cod, a place that has always been incredibly special to Abby. It was such a thoughtful and meaningful moment, and one we&rsquo;ll always remember. Getting engaged in one of our favorite places, after a year of making so many memories together, felt like the perfect way to celebrate everything that had brought us there.</p>
-        <p>We&rsquo;re so excited for what&rsquo;s ahead, and even more excited to celebrate with all the people who have been part of our lives along the way.</p>
+        <div class="story-row">
+          <figure class="story-photo story-photo-l" style="--r:-4deg"><img src="assets/story/tennis-net.jpg" alt="Abby and Justin at a tennis net" loading="lazy"></figure>
+          <p>We met on a sunny afternoon in Atlanta at a singles tennis event hosted by Abby&rsquo;s company, Green Flag. Funny enough, we never actually spoke that day, but we both saw each other in passing and left with enough of a good vibe to want to connect afterward.</p>
+          <figure class="story-photo story-photo-r" style="--r:3deg"><img src="assets/story/world-cup.jpg" alt="Abby and Justin at a World Cup watch party" loading="lazy"></figure>
+        </div>
+        <div class="story-row">
+          <figure class="story-photo story-photo-l" style="--r:3deg"><img src="assets/story/adirondack-drinks.jpg" alt="Abby and Justin with drinks in Adirondack chairs" loading="lazy"></figure>
+          <p>On our first date, we quickly realized how much we had in common. We discovered we had mutual friends, shared similar goals and dreams for the future, and both loved game nights with our families. By our second date, we&rsquo;d discovered we were both Swifties. We had so much fun together and connected on so many different things that one date turned into another, and before long, we were spending most of our free time together.</p>
+          <figure class="story-photo story-photo-r" style="--r:-3deg"><img src="assets/story/wine-cave.jpg" alt="Abby and Justin in a wine cave" loading="lazy"></figure>
+        </div>
+        <div class="story-row">
+          <figure class="story-photo story-photo-l" style="--r:-3deg"><img src="assets/story/biltmore.jpg" alt="Abby and Justin at the Biltmore in Asheville" loading="lazy"></figure>
+          <p>One of our first trips was to Asheville, where we got a glimpse of what life together might look like beyond our usual routines in Atlanta. Over the next several months, we met each other&rsquo;s families, traveled together, hosted plenty of game nights, and eventually moved in together. It all happened pretty naturally, and we found ourselves building the kind of life we&rsquo;d both always wanted.</p>
+          <figure class="story-photo story-photo-r" style="--r:4deg"><img src="assets/story/ugly-sweaters.jpg" alt="Abby and Justin in ugly Christmas sweaters" loading="lazy"></figure>
+        </div>
+        <div class="story-row">
+          <figure class="story-photo story-photo-l" style="--r:4deg"><img src="assets/story/proposal.jpg" alt="Abby showing off her engagement ring on the beach" loading="lazy"></figure>
+          <p>On our one-year anniversary, Justin proposed at sunset on the beach in Cape Cod, a place that has always been incredibly special to Abby. It was such a thoughtful and meaningful moment, and one we&rsquo;ll always remember. Getting engaged in one of our favorite places, after a year of making so many memories together, felt like the perfect way to celebrate everything that had brought us there.</p>
+          <figure class="story-photo story-photo-r" style="--r:-3deg"><img src="assets/story/engagement-kiss-bw.jpg" alt="Black and white engagement photo of Abby and Justin" loading="lazy"></figure>
+        </div>
+        <div class="story-row">
+          <figure class="story-photo story-photo-l" style="--r:-4deg"><img src="assets/story/tennis-sunglasses.jpg" alt="Justin kissing Abby on the cheek at the tennis court" loading="lazy"></figure>
+          <p>We&rsquo;re so excited for what&rsquo;s ahead, and even more excited to celebrate with all the people who have been part of our lives along the way.</p>
+          <figure class="story-photo story-photo-r" style="--r:3deg"><img src="assets/story/cake-tasting.jpg" alt="Abby and Justin at their cake tasting" loading="lazy"></figure>
+        </div>
       </div>
     </div>
-    <div class="gallery-item gi-3"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-3.jpg"><img src="assets/197DEDFD-A898-4E4E-9942-4325CAE1169D.JPG" alt="" loading="lazy"></picture></div>
-    <div class="gallery-item gi-4"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-4.jpg"><img src="assets/9B598D50-837D-4FCB-8AC3-00459B5DEDA1.JPG" alt="" loading="lazy"></picture></div>
-    <div class="gallery-item gi-5"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-5.jpg"><img src="assets/C18265F4-A505-4BAF-AD86-EA5A9B2B5A60.JPG" alt="" loading="lazy"></picture></div>
-    <div class="gallery-item gi-6"><picture><source media="(max-width: 860px)" srcset="assets/mobile/gallery-6.jpg"><img src="assets/E3695CD1-B8B9-4DD5-AE9E-DCB77388AF00.JPG" alt="" loading="lazy"></picture></div>
+  </div>
+  <div class="memory-wall reveal">
+    <figure class="memory-photo" style="--r:-3deg"><img src="assets/story/garden-swing.jpg" alt="Abby and Justin on a garden swing" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:2deg"><img src="assets/story/boston-swan-boats.jpg" alt="Abby and Justin by the Boston swan boats" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:-2deg"><img src="assets/story/park-steps-closeup.jpg" alt="Close-up engagement photo of Abby and Justin" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:3deg"><img src="assets/story/us-capitol.jpg" alt="Abby and Justin at the U.S. Capitol" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:-4deg"><img src="assets/story/holiday-lights.jpg" alt="Abby and Justin at a holiday lights display" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:3deg"><img src="assets/story/coke-bear.jpg" alt="Abby and Justin with the Coca-Cola polar bear" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:-2deg"><img src="assets/story/uva-rotunda.jpg" alt="Abby and Justin with their dog at the UVA Rotunda" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:4deg"><img src="assets/story/carousel.jpg" alt="Abby and Justin on a carousel" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:-3deg"><img src="assets/story/gatsby-party.jpg" alt="Abby and Justin dressed up for a Gatsby party" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:2deg"><img src="assets/story/tennis-dog.jpg" alt="Abby and Justin on a tennis court with their dog" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:3deg"><img src="assets/story/lake-dock.jpg" alt="Abby and Justin on a lake dock" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:-3deg"><img src="assets/story/beach.jpg" alt="Abby and Justin on the beach" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:2deg"><img src="assets/story/st-augustine.jpg" alt="Abby and Justin in St. Augustine" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:-4deg"><img src="assets/story/mario-block.jpg" alt="Abby and Justin under a Mario question block" loading="lazy"></figure>
+    <figure class="memory-photo" style="--r:3deg"><img src="assets/story/central-park.jpg" alt="Abby and Justin in Central Park" loading="lazy"></figure>
   </div>
 </div>
 
